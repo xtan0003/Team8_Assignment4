@@ -1,0 +1,120 @@
+---
+title: "Team8_Report"
+author:
+- familyname: XXXX
+  othernames: XXX
+  address: Monash Universtidy
+  email: XXX
+  correspondingauthor: true
+  qualifications:  XXX
+- familyname: XXXX
+  othernames: Reports
+  address: XXX
+  qualifications: XXX
+- familyname: Li
+  othernames: Hao
+  address: XXX
+  email: hlii0151@student.monash.edu
+  correspondingauthor: true
+  qualifications:  XXX
+department: Our consultancy \newline add names &\newline add names
+organization: Australian Government COVID19
+bibliography: references.bib
+biblio-style: authoryear-comp
+linestretch: 1.5
+output:
+  bookdown::pdf_document2:
+    template: monashreport2.tex
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 8
+    includes:
+      in_header: preamble.tex
+    keep_tex: yes
+    number_sections: yes
+    citation_package: biblatex
+    toc: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      messages = FALSE, 
+                      warning = FALSE)
+library(tidyverse)
+library(janitor)
+library(imputeTS)
+library(broom)
+library(gglm)
+library(patchwork)
+library(flextable)
+```
+
+```{r}
+AUS <- read_csv("Data/AUS.csv") %>% 
+  dplyr::filter(year >= 1990 & year <= 2019) %>% 
+  janitor::clean_names()
+```
+
+
+\section*{Country XX1 and YY1"}
+
+\section*{Country XX2 and YY2}
+
+\section
+## Q3 The influence of different factors on GDP.
+
+* Because there are missing values in some years of some variables in the original data, which will affect the estimation of the regression model, it is necessary to interpolate the missing values. Here I use the mean to interpolate. At the same time, I deal with the variable `population` in millions of units.
+
+```{r}
+AUS_lm <- AUS %>% 
+  mutate(across(everything(),na_mean)) %>% 
+  dplyr::select(-year) %>% 
+  mutate(population = population/100000)
+AUS_lm %>% 
+  pivot_longer(-gdp_growth,names_to = "vars",values_to = "value") %>% 
+  ggplot(aes(value,gdp_growth,color = vars)) +
+  geom_point() +
+  facet_wrap(~ vars,scales = "free")+
+  geom_smooth(method = lm) +
+  guides(color = F) +
+  labs(x = "variables",y = "percentage of GDP change")+
+  theme(strip.text.x = element_text(size = 8))
+```
+
+
+
+```{r}
+lm_model <- lm(gdp_growth ~ .,data = AUS_lm)
+lm_model %>% 
+  tidy() %>% 
+  mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>% 
+  regulartable()
+```
+
+It can be found that most variables are not significant when using the whole model for regression. I think this is due to the existence of multicollinearity in the data. Let's judge whether there is serious multicollinearity.
+
+```{r}
+lm_model %>%
+  car::vif() %>%
+  as.data.frame() %>% 
+  setNames("Variance Inflation Factors") %>% 
+  rownames_to_column("Variables") %>% 
+  regulartable()
+```
+
+By calculating the variance expansion factor, we can find that the model has serious multicollinearity, so we need to delete the variables.
+
+```{r}
+lm_steped <- step(lm_model,trace = 0)
+gglm(lm_steped)
+lm_steped %>% 
+  tidy() %>% 
+  mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>%
+  regulartable()
+```
+
+The regression model with stepwise regression method excluding highly correlated variables shows that variables `population`,`unemployment_with_basic_education`,`unemployment_male` have a significant impact on GDP growth at the significance level of 10%. To be specific, every 1 million increase in `population` will reduce GDP by 0.0229%. This may be because the Australian government is unable to provide sufficient employment opportunities and the demographic dividend has not been fully released. From the perspective of variable `unemployment_with_basic_education`, every 1% increase in the employment rate of people with basic education will increase the GDP growth by 0.38% on average. This main reason may be the industrial structure in Australia is undergoing adjustment, and some industries are eliminating people with only basic education to reduce the labor cost. Finally, every 1% increase in male unemployment rate will reduce GDP growth by an average of 0.34%, which shows that male workers still dominate all walks of life in Australia.
+
+
+Conclusion:
+Through the above model analysis of variables. We can know that  the variables "population", "unemployment rate of basic education" and "unemployment rate of men" have a certain impact on Australia's GDP.

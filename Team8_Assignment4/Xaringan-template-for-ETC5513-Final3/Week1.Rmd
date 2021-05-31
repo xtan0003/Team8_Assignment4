@@ -1,0 +1,417 @@
+---
+title: "The Factors Relates To GDP Growth"
+author: "Xinyi Tang, Hao Li and Peizhao Chen"
+institute: "Department of Econometrics and Business Statistics"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: css/style.css
+    yolo: FALSE
+---
+
+```{r setup,echo = FALSE, message = FALSE, warning = FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r , echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo=FALSE,
+                      include=TRUE, 
+                      messages = FALSE, 
+                      warning = FALSE)
+
+library(palmerpenguins)
+library(tidyverse)
+library(janitor)
+library(imputeTS)
+library(broom)
+library(gglm)
+library(patchwork)
+library(flextable)
+library(kableExtra)
+library(datasets)
+library(tidyverse)
+library(datasets)
+library(here)
+library(readxl)
+library(plotly)
+library(corrplot)
+library(rockchalk)
+library(dplyr)
+```
+
+
+
+class: left, top
+# Data
+.content-box-duke-green[ 
+* Data: World Bank Open Data.
+]
+.content-box-duke-green[ 
+* The variables are GDP growth, population, Inflation, unemployment rate, and the unemployment rate for gender and the level of education.
+]
+
+```{r ,echo=TRUE,include=FALSE}
+
+AUS <- read_csv(here::here("Data/AUS.csv")) %>% 
+  dplyr::filter(year >= 1990 & year <= 2019) %>% 
+  janitor::clean_names()
+
+AUS1 <- read_excel(here::here("Data/A4_data.xlsx")) %>% 
+  dplyr::filter(year >= 1990 & year <= 2013)%>%
+  rename("Unemploy_F"=`Unemployment female`,
+         "Unemploy_M"=`Unemployment male`,
+         "Unemploy_T"=`Unemployment total`,
+         "Advanced_edu"=`advanced education`,
+         "Basic_edu"=`basic education`)
+
+```
+---
+class: center, middle
+### Australia's Growth trend of population and GDP from 1990 to 2019
+```{r out.width = '60%',echo=FALSE,fig.align='center'}
+knitr::include_graphics("fig/aus.jpg")
+```
+
+
+---
+class:  middle, top
+# GDP
+
+.pull-right1[
+```{r 1 ,eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+g1 <- AUS %>% 
+  ggplot(aes(year,gdp_growth)) +
+  geom_line()+
+  labs(x = "Year",
+       y = "percentage of GDP change")
+g1
+```
+
+]
+
+.left[
+* Throughout 3 decades,only the beginning of 1990s has experienced a negative growth which was about -0.3%,and the following growth of years was fluctuating around 2.5% even after 2008 the year of financial crisis the growth is still positive. What happened in the 1990s?
+
+]
+
+.left[
+* The early 1990s recession mainly resulted from Australia's efforts to address excess domestic demand,.curb speculative behaviour in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation. 
+
+]
+
+---
+
+class:  middle, top
+# Population
+.pull-right1[
+```{r 1.1, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+g2 <- AUS %>% 
+  ggplot(aes(year,population)) +
+  geom_line()+
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = "Year",
+       y = "Population")
+
+g2
+```
+]
+
+.left[
+* The Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.
+
+]
+
+.left[
+* Australia has population growth rate around 1.48% averagely according to worldbank data.Migration and birth rate minus mortality rate were included in this growth rate.
+
+]
+---
+
+class:  middle, top
+# Inflation
+.pull-right1[
+```{r 1.3, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+g3 <- AUS1 %>%
+  ggplot(aes(year,  `Inflation, consumer prices (annual %)`)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Inflation rate")
+g3
+```
+]
+
+.left[
+* The inflation rate was fluctuating throughout two decades.The pinnacle was in 1990,about 7% that is main attribute to the recession,While lowest point was given at 1994
+
+]
+---
+class:  middle, top
+# Unemployment
+.pull-right1[
+```{r}
+g4 <- AUS1 %>%
+  ggplot(aes(year, Unemploy_T)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "unemployment rate")
+g4
+```
+
+]
+
+.left[
+ * The long-run downward trend in unempolyment rate is consistent with the idea that Australia's long-term unemployment ratio of 24% ranked 12th lowest out of 35 OECD countries.
+
+]
+
+.left[
+ * Peaks: 1990s Recession and 2008 Global Financial Crisis
+]
+
+---
+
+
+class: center, middle
+# Boxplot
+.pull-right1[
+```{r boxplot}
+boxplot <- AUS1 %>%
+  select(Unemploy_T,
+         Unemploy_F ,
+         Unemploy_M,
+         Advanced_edu,
+         Basic_edu) %>%
+  gather(key = "variable", value = "value") %>%
+  ggplot() +
+  geom_boxplot(aes(x = variable, y = value))
+boxplot
+
+```
+]
+
+.left[
+ * people with advanced education has a lower unemployment rate than people with basic education.
+]
+.left[
+ * the average male unemployment rate is higher than female unemployment rate
+]
+---
+class: center, middle
+
+# Unemployment rate by gender
+.pull-right1[
+```{r}
+AUS_sex<-AUS1%>%
+  select(year,
+         Unemploy_F,
+         Unemploy_M)%>%
+  filter(year%in%c("1979":"2019"))%>%
+  pivot_longer(cols = -c('year'),
+               names_to = "Unemployment",      
+               values_to = "Percent")
+
+g6 <- ggplot(AUS_sex,aes(x=year,y=Percent,by=Unemployment,color = factor(Unemployment)))+
+  geom_line()+
+  labs(color = "Unemployment by Genders") 
+g6
+```
+]
+
+.left[
+ * The line graph for female and male have a very similar pattern. 
+]
+.left[
+ * Female unemployment rates have been consistently below male rates, despite the fairly pick-up in unemployment rates for females over the past years
+]
+
+---
+class: center, middle
+
+# Correlation
+
+```{r step4,echo=FALSE,include=FALSE}
+
+correlation <- AUS1 %>%
+  select(GDP_growth,
+         Population,
+         `Inflation, consumer prices (annual %)`,
+         Unemploy_T) %>% 
+  cor() %>% round(2)
+correlation
+
+```
+
+.pull-right1[
+```{r echo=FALSE,include=TRUE}
+corrplot::corrplot(correlation)
+```
+]
+
+
+
+.left[
+ * High inflation would lead to an increase in GDP, so we expected to see a positive association between inflation and GDP. The correlation graph shows the sign we expected. 
+]
+.left[
+ * The low unemployment rate would lead to an increase in GDP. Hence we expected to see a negative association between the unemployment rate and GDP. The correlation graph shows the sign we expected.
+
+]
+.left[
+ * Population increase have a positive impact on GDP. Hence, we expected to see a positive relationship between population and GDP. However, The correlation graph does not show the sign we expected. 
+
+]
+.left[
+ * Reason: Australia population growth rate is low.
+
+]
+---
+### The influence of different factors on GDP.
+.content-box-duke-green[ 
+* Because there are missing values in some years of some variables in the original data, which will affect the estimation of the regression model, it is necessary to interpolate the missing values. Here I use the mean to interpolate. At the same time, I deal with the variable `population` in millions of units.
+
+]
+
+```{r message=FALSE,echo=FALSE,include=FALSE}
+
+AUS_lm <- AUS %>% 
+  mutate(across(everything(),na_mean)) %>% 
+  dplyr::select(-year) %>% 
+  mutate(population = population/100000)
+AUS_lm %>% 
+  pivot_longer(-gdp_growth,names_to = "vars",values_to = "value") %>% 
+  ggplot(aes(value,gdp_growth,color = vars)) +
+  geom_point() +
+  facet_wrap(~ vars,scales = "free")+
+  geom_smooth(method = lm) +
+  guides(color = F) +
+  labs(x = "variables",y = "percentage of GDP change")+
+  theme(strip.text.x = element_text(size = 8))
+
+```
+---
+class: center, middle
+
+# Estimated mutli-linear regression
+
+```{r,eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+
+lm_model <- lm(gdp_growth ~ .,data = AUS_lm)
+lm_model %>% 
+  tidy() %>% 
+  mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>% 
+  regulartable()
+
+```
+
+.content-box-duke-green[ 
+* It can be found that most variables are not significant when using the whole model for regression. I think this is due to the existence of multicollinearity in the data. Let's judge whether there is serious multicollinearity.
+]
+---
+
+class: center, middle
+
+# Variance Inflation Factors
+
+```{r, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+
+lm_model %>%
+  car::vif() %>%
+  as.data.frame() %>% 
+  setNames("Variance Inflation Factors") %>% 
+  rownames_to_column("Variables") %>% 
+  regulartable()
+
+```
+
+.content-box-duke-green[ 
+* By calculating the variance expansion factor, we can find that the model has serious multicollinearity, so we need to delete the variables.
+]
+---
+
+class: center, middle
+
+# Model Diagnostics
+
+```{r,eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+lm_steped <- step(lm_model,trace = 0)
+gglm(lm_steped)
+```
+
+---
+class: center, middle
+
+# Step-wise regression method
+
+```{r}
+lm_steped %>% 
+  tidy() %>% 
+  mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>%
+  regulartable()
+```
+
+.content-box-soft[ 
+* The regression model with step-wise regression method excluding highly correlated variables shows that variables `population`, `unemployment with basic education`, and `unemployment male` 
+have a significant impact on GDP growth at the significance level of 10%. 
+]
+---
+
+class: center, middle
+
+# Continuous
+
+.content-box-soft[ 
+* To be specific, every 1 million increase in `population` will reduce GDP by 0.0229%. This may be because the Australian government is unable to provide sufficient employment opportunities and the demographic dividend has not been fully released. 
+]
+
+.content-box-soft[ 
+* From the perspective of variable `unemployment_with_basic_education`, every 1% increase in the home page rate of people with basic education will increase the GDP growth by 0.38% on average. This may be because the industrial structure in Australia is undergoing adjustment, and some industries are eliminating people with only basic education, thus reducing the labor cost. 
+]
+
+.content-box-soft[ 
+* Finally, every 1% increase in male unemployment rate will reduce GDP growth by an average of 0.34%, which shows that male workers still dominate all works of life in Australia.
+]
+
+---
+class: center, middle
+
+# Conclusion:
+
+.content-box-duke-green[ 
+* Through the above model analysis of variables."population", "unemployment rate of basic education" and "unemployment rate of men" have a certain impact on Australia's GDP. 
+]
+
+---
+class: center, middle
+
+# Data source:
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.BASC.ZS?end=2020&start=2020&view=bar
+]
+
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.ADVN.ZS
+]
+
+.left[
+* https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG
+]
+
+.left[
+* https://data.worldbank.org/indicator/SP.POP.TOTL
+]
+
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.NE.ZS
+]
+
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.NE.ZS
+]
+
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS?locations=AU
+]
+
+.left[
+* https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=AU
+]

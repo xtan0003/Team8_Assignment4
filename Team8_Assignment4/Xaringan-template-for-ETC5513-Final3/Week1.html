@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The Factors Relates To GDP Growth</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Xinyi Tang, Hao Li and Peizhao Chen" />
+    <link href="libs/tabwid/tabwid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# The Factors Relates To GDP Growth
+### Xinyi Tang, Hao Li and Peizhao Chen
+### Department of Econometrics and Business Statistics
+
+---
+
+
+
+
+
+
+
+
+class: left, top
+# Data
+.content-box-duke-green[ 
+* Data: World Bank Open Data.
+]
+.content-box-duke-green[ 
+* The variables are GDP growth, population, Inflation, unemployment rate, and the unemployment rate for gender and the level of education.
+]
+
+
+---
+class: center, middle
+### Australia's Growth trend of population and GDP from 1990 to 2019
+&lt;img src="fig/aus.jpg" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class:  middle, top
+# GDP
+
+.pull-right1[
+![](Week1_files/figure-html/1 -1.png)&lt;!-- --&gt;
+
+]
+
+.left[
+* Throughout 3 decades,only the beginning of 1990s has experienced a negative growth which was about -0.3%,and the following growth of years was fluctuating around 2.5% even after 2008 the year of financial crisis the growth is still positive. What happened in the 1990s?
+
+]
+
+.left[
+* The early 1990s recession mainly resulted from Australia's efforts to address excess domestic demand,.curb speculative behaviour in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation. 
+
+]
+
+---
+
+class:  middle, top
+# Population
+.pull-right1[
+![](Week1_files/figure-html/1.1-1.png)&lt;!-- --&gt;
+]
+
+.left[
+* The Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.
+
+]
+
+.left[
+* Australia has population growth rate around 1.48% averagely according to worldbank data.Migration and birth rate minus mortality rate were included in this growth rate.
+
+]
+---
+
+class:  middle, top
+# Inflation
+.pull-right1[
+![](Week1_files/figure-html/1.3-1.png)&lt;!-- --&gt;
+]
+
+.left[
+* The inflation rate was fluctuating throughout two decades.The pinnacle was in 1990,about 7% that is main attribute to the recession,While lowest point was given at 1994
+
+]
+---
+class:  middle, top
+# Unemployment
+.pull-right1[
+![](Week1_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+]
+
+.left[
+ * The long-run downward trend in unempolyment rate is consistent with the idea that Australia's long-term unemployment ratio of 24% ranked 12th lowest out of 35 OECD countries.
+
+]
+
+.left[
+ * Peaks: 1990s Recession and 2008 Global Financial Crisis
+]
+
+---
+
+
+class: center, middle
+# Boxplot
+.pull-right1[
+![](Week1_files/figure-html/boxplot-1.png)&lt;!-- --&gt;
+]
+
+.left[
+ * people with advanced education has a lower unemployment rate than people with basic education.
+]
+.left[
+ * the average male unemployment rate is higher than female unemployment rate
+]
+---
+class: center, middle
+
+# Unemployment rate by gender
+.pull-right1[
+![](Week1_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+]
+
+.left[
+ * The line graph for female and male have a very similar pattern. 
+]
+.left[
+ * Female unemployment rates have been consistently below male rates, despite the fairly pick-up in unemployment rates for females over the past years
+]
+
+---
+class: center, middle
+
+# Correlation
+
+
+
+.pull-right1[
+![](Week1_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+]
+
+
+
+.left[
+ * High inflation would lead to an increase in GDP, so we expected to see a positive association between inflation and GDP. The correlation graph shows the sign we expected. 
+]
+.left[
+ * The low unemployment rate would lead to an increase in GDP. Hence we expected to see a negative association between the unemployment rate and GDP. The correlation graph shows the sign we expected.
+
+]
+.left[
+ * Population increase have a positive impact on GDP. Hence, we expected to see a positive relationship between population and GDP. However, The correlation graph does not show the sign we expected. 
+
+]
+.left[
+ * Reason: Australia population growth rate is low.
+
+]
+---
+### The influence of different factors on GDP.
+.content-box-duke-green[ 
+* Because there are missing values in some years of some variables in the original data, which will affect the estimation of the regression model, it is necessary to interpolate the missing values. Here I use the mean to interpolate. At the same time, I deal with the variable `population` in millions of units.
+
+]
+
+
+---
+class: center, middle
+
+# Estimated mutli-linear regression
+
+
+&lt;template id="4100c7a0-a6a8-4b45-8ab7-4de1e1929844"&gt;&lt;style&gt;
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+&lt;/style&gt;&lt;div class="tabwid"&gt;&lt;style&gt;.cl-450900da{border-collapse:collapse;}.cl-4500ba10{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4500d8ba{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4500d8ce{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-450115be{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-450115d2{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-450115e6{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-450115e7{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-450115f0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-450115fa{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}&lt;/style&gt;&lt;table class='cl-450900da'&gt;&lt;thead&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-450115fa"&gt;&lt;p class="cl-4500d8ba"&gt;&lt;span class="cl-4500ba10"&gt;term&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115f0"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;estimate&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115f0"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;std.error&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115f0"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;statistic&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115f0"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;p.value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-450115d2"&gt;&lt;p class="cl-4500d8ba"&gt;&lt;span class="cl-4500ba10"&gt;(Intercept)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;6.5313&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;4.8638&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;1.3428&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.1919&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-450115d2"&gt;&lt;p class="cl-4500d8ba"&gt;&lt;span class="cl-4500ba10"&gt;population&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;-0.0234&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.0124&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;-1.8932&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.0705&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-450115d2"&gt;&lt;p class="cl-4500d8ba"&gt;&lt;span class="cl-4500ba10"&gt;unemployment_with_advanced_education&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.0316&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.6093&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.0518&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.9591&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-450115d2"&gt;&lt;p class="cl-4500d8ba"&gt;&lt;span class="cl-4500ba10"&gt;unemployment_with_basic_education&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.3809&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.2390&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;1.5937&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.1241&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-450115d2"&gt;&lt;p class="cl-4500d8ba"&gt;&lt;span class="cl-4500ba10"&gt;unemployment_female&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;-0.1105&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;1.0815&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;-0.1022&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115be"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.9195&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-450115e7"&gt;&lt;p class="cl-4500d8ba"&gt;&lt;span class="cl-4500ba10"&gt;unemployment_male&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115e6"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;-0.2652&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115e6"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.8168&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115e6"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;-0.3247&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-450115e6"&gt;&lt;p class="cl-4500d8ce"&gt;&lt;span class="cl-4500ba10"&gt;0.7482&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/template&gt;
+&lt;div class="flextable-shadow-host" id="e8dc0f49-bceb-448b-ba59-41002da99850"&gt;&lt;/div&gt;
+&lt;script&gt;
+var dest = document.getElementById("e8dc0f49-bceb-448b-ba59-41002da99850");
+var template = document.getElementById("4100c7a0-a6a8-4b45-8ab7-4de1e1929844");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+&lt;/script&gt;
+
+.content-box-duke-green[ 
+* It can be found that most variables are not significant when using the whole model for regression. I think this is due to the existence of multicollinearity in the data. Let's judge whether there is serious multicollinearity.
+]
+---
+
+class: center, middle
+
+# Variance Inflation Factors
+
+
+&lt;template id="a6dd7c55-915a-48a4-b6c3-50efef2f1aa9"&gt;&lt;style&gt;
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+&lt;/style&gt;&lt;div class="tabwid"&gt;&lt;style&gt;.cl-45257c38{border-collapse:collapse;}.cl-451ef69c{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-451f0718{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-451f072c{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-451f3bde{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-451f3bfc{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-451f3c06{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-451f3c1a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-451f3c24{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-451f3c2e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}&lt;/style&gt;&lt;table class='cl-45257c38'&gt;&lt;thead&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-451f3c24"&gt;&lt;p class="cl-451f0718"&gt;&lt;span class="cl-451ef69c"&gt;Variables&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-451f3c2e"&gt;&lt;p class="cl-451f072c"&gt;&lt;span class="cl-451ef69c"&gt;Variance Inflation Factors&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-451f3bde"&gt;&lt;p class="cl-451f0718"&gt;&lt;span class="cl-451ef69c"&gt;population&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-451f3bfc"&gt;&lt;p class="cl-451f072c"&gt;&lt;span class="cl-451ef69c"&gt;2.156211&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-451f3bde"&gt;&lt;p class="cl-451f0718"&gt;&lt;span class="cl-451ef69c"&gt;unemployment_with_advanced_education&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-451f3bfc"&gt;&lt;p class="cl-451f072c"&gt;&lt;span class="cl-451ef69c"&gt;1.234735&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-451f3bde"&gt;&lt;p class="cl-451f0718"&gt;&lt;span class="cl-451ef69c"&gt;unemployment_with_basic_education&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-451f3bfc"&gt;&lt;p class="cl-451f072c"&gt;&lt;span class="cl-451ef69c"&gt;1.348467&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-451f3bde"&gt;&lt;p class="cl-451f0718"&gt;&lt;span class="cl-451ef69c"&gt;unemployment_female&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-451f3bfc"&gt;&lt;p class="cl-451f072c"&gt;&lt;span class="cl-451ef69c"&gt;64.274387&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-451f3c06"&gt;&lt;p class="cl-451f0718"&gt;&lt;span class="cl-451ef69c"&gt;unemployment_male&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-451f3c1a"&gt;&lt;p class="cl-451f072c"&gt;&lt;span class="cl-451ef69c"&gt;62.096962&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/template&gt;
+&lt;div class="flextable-shadow-host" id="aed9a1a5-ba28-4669-8089-4de80074986d"&gt;&lt;/div&gt;
+&lt;script&gt;
+var dest = document.getElementById("aed9a1a5-ba28-4669-8089-4de80074986d");
+var template = document.getElementById("a6dd7c55-915a-48a4-b6c3-50efef2f1aa9");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+&lt;/script&gt;
+
+.content-box-duke-green[ 
+* By calculating the variance expansion factor, we can find that the model has serious multicollinearity, so we need to delete the variables.
+]
+---
+
+class: center, middle
+
+# Model Diagnostics
+
+![](Week1_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+---
+class: center, middle
+
+# Step-wise regression method
+
+
+&lt;template id="3c8897e9-92e8-4c36-aed9-a8f9e46a1344"&gt;&lt;style&gt;
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+&lt;/style&gt;&lt;div class="tabwid"&gt;&lt;style&gt;.cl-45e73ada{border-collapse:collapse;}.cl-45e19fee{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-45e1afb6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-45e1afd4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-45e1e472{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45e1e490{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45e1e49a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45e1e4a4{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45e1e4ae{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-45e1e4b8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}&lt;/style&gt;&lt;table class='cl-45e73ada'&gt;&lt;thead&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-45e1e4b8"&gt;&lt;p class="cl-45e1afb6"&gt;&lt;span class="cl-45e19fee"&gt;term&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e4ae"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;estimate&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e4ae"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;std.error&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e4ae"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;statistic&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e4ae"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;p.value&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-45e1e490"&gt;&lt;p class="cl-45e1afb6"&gt;&lt;span class="cl-45e19fee"&gt;(Intercept)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;6.2908&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;3.5992&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;1.7478&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;0.0923&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-45e1e490"&gt;&lt;p class="cl-45e1afb6"&gt;&lt;span class="cl-45e19fee"&gt;population&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;-0.0229&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;0.0113&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;-2.0351&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;0.0522&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-45e1e490"&gt;&lt;p class="cl-45e1afb6"&gt;&lt;span class="cl-45e19fee"&gt;unemployment_with_basic_education&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;0.3855&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;0.2245&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;1.7175&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e472"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;0.0978&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr style="overflow-wrap:break-word;"&gt;&lt;td class="cl-45e1e4a4"&gt;&lt;p class="cl-45e1afb6"&gt;&lt;span class="cl-45e19fee"&gt;unemployment_male&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e49a"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;-0.3445&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e49a"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;0.1475&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e49a"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;-2.3356&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;td class="cl-45e1e49a"&gt;&lt;p class="cl-45e1afd4"&gt;&lt;span class="cl-45e19fee"&gt;0.0275&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/template&gt;
+&lt;div class="flextable-shadow-host" id="22b8615b-3bd5-41f3-8ae8-97943c64d878"&gt;&lt;/div&gt;
+&lt;script&gt;
+var dest = document.getElementById("22b8615b-3bd5-41f3-8ae8-97943c64d878");
+var template = document.getElementById("3c8897e9-92e8-4c36-aed9-a8f9e46a1344");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+&lt;/script&gt;
+
+.content-box-soft[ 
+* The regression model with step-wise regression method excluding highly correlated variables shows that variables `population`, `unemployment with basic education`, and `unemployment male` 
+have a significant impact on GDP growth at the significance level of 10%. 
+]
+---
+
+class: center, middle
+
+# Continuous
+
+.content-box-soft[ 
+* To be specific, every 1 million increase in `population` will reduce GDP by 0.0229%. This may be because the Australian government is unable to provide sufficient employment opportunities and the demographic dividend has not been fully released. 
+]
+
+.content-box-soft[ 
+* From the perspective of variable `unemployment_with_basic_education`, every 1% increase in the home page rate of people with basic education will increase the GDP growth by 0.38% on average. This may be because the industrial structure in Australia is undergoing adjustment, and some industries are eliminating people with only basic education, thus reducing the labor cost. 
+]
+
+.content-box-soft[ 
+* Finally, every 1% increase in male unemployment rate will reduce GDP growth by an average of 0.34%, which shows that male workers still dominate all works of life in Australia.
+]
+
+---
+class: center, middle
+
+# Conclusion:
+
+.content-box-duke-green[ 
+* Through the above model analysis of variables."population", "unemployment rate of basic education" and "unemployment rate of men" have a certain impact on Australia's GDP. 
+]
+
+---
+class: center, middle
+
+# Data source:
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.BASC.ZS?end=2020&amp;start=2020&amp;view=bar
+]
+
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.ADVN.ZS
+]
+
+.left[
+* https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG
+]
+
+.left[
+* https://data.worldbank.org/indicator/SP.POP.TOTL
+]
+
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.TOTL.FE.NE.ZS
+]
+
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.TOTL.MA.NE.ZS
+]
+
+.left[
+* https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS?locations=AU
+]
+
+.left[
+* https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=AU
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
