@@ -7,8 +7,8 @@ author:
   email: XXX
   correspondingauthor: true
   qualifications:  XXX
-- familyname: XXXX
-  othernames: Reports
+- familyname: Tang
+  othernames: Xinyi
   address: XXX
   qualifications: XXX
 - familyname: XXX
