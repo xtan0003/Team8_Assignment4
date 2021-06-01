@@ -38,18 +38,171 @@ output:
 
 ```{r , echo = FALSE, message = FALSE, warning = FALSE}
 # Libraries
+knitr::opts_chunk$set(echo=FALSE,
+                      include=TRUE, 
+                      messages = FALSE, 
+                      warning = FALSE)
 
+library(palmerpenguins)
 library(tidyverse)
-library(readr)
+library(janitor)
+library(imputeTS)
+library(broom)
+library(gglm)
+library(patchwork)
+library(flextable)
 library(kableExtra)
-library(bookdown)
+library(datasets)
+library(tidyverse)
+library(datasets)
+library(here)
+library(readxl)
+library(plotly)
+library(corrplot)
+library(rockchalk)
+library(dplyr)
+```
+
+\section*{Country XX1 and YY1"}
+
+```{r}
+
+AUS <- read_csv(here::here("Data/AUS.csv")) %>% 
+  dplyr::filter(year >= 1990 & year <= 2019) %>% 
+  janitor::clean_names()
+
+AUS1 <- read_excel(here::here("Data/A4_data.xlsx")) %>% 
+  dplyr::filter(year >= 1990 & year <= 2013)%>%
+  rename("Unemploy_F"=`Unemployment female`,
+         "Unemploy_M"=`Unemployment male`,
+         "Unemploy_T"=`Unemployment total`,
+         "Advanced_edu"=`advanced education`,
+         "Basic_edu"=`basic education`)
+```
+
+```{r 1 ,eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+g1 <- AUS %>% 
+  ggplot(aes(year,gdp_growth)) +
+  geom_line()+
+  labs(x = "Year",
+       y = "percentage of GDP change")
+g1
+```
+
+```{r 1.1, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+g2 <- AUS %>% 
+  ggplot(aes(year,population)) +
+  geom_line()+
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = "Year",
+       y = "Population")
+
+g2
+```
+
+```{r 1.3, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+g3 <- AUS1 %>%
+  ggplot(aes(year,  `Inflation, consumer prices (annual %)`)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "Inflation rate")
+g3
+```
+
+```{r}
+AUS_edu<-
+
 
 ```
 
 
+```{r echo=FALSE,include=FALSE}
 
-\section*{Country XX1 and YY1"}
+AUS_edu_longer-AUS_edu%>%
+  pivot_longer(cols = -c('year'),
+               names_to = Unemployment,      
+               values_to = Percent)
 
+AUS_edu_wider- AUS_edu_longer%>%
+  pivot_wider(id_cols = Unemployment,
+              names_from = year,
+              values_from = Percent)%>%
+   mutate(YOY_01 = paste0( 
+           round((`2001`-`2000`)
+                 /`2000`*100,2),"%"),
+         YOY_02 = paste0( 
+           round((`2002`-`2001`)
+                 /`2001`*100,2),"%"),
+         YOY_03 = paste0( 
+           round((`2003`-`2002`)
+                 /`2002`*100,2),"%"),
+         YOY_04 = paste0( 
+           round((`2004`-`2003`)
+                 /`2003`*100,2),"%"),
+         YOY_05 = paste0( 
+           round((`2005`-`2004`)
+                 /`2004`*100,2),"%"),
+         YOY_06 = paste0( 
+           round((`2006`-`2005`)
+                 /`2005`*100,2),"%"),
+         YOY_07 = paste0( 
+           round((`2007`-`2006`)
+                 /`2006`*100,2),"%"),
+         YOY_08 = paste0( 
+           round((`2008`-`2007`)
+                 /`2007`*100,2),"%"),
+         YOY_09 = paste0( 
+           round((`2009`-`2008`)
+                 /`2008`*100,2),"%"),
+         YOY_10 = paste0( 
+           round((`2010`-`2009`)
+                 /`2009`*100,2),"%"),
+         YOY_11 = paste0( 
+           round((`2011`-`2010`)
+                 /`2010`*100,2),"%"),
+         YOY_12 = paste0( 
+           round((`2012`-`2011`)
+                 /`2011`*100,2), "%"),
+         YOY_13 = paste0( 
+           round((`2013`-`2012`)
+                 /`2012`*100,2), "%"))%>%
+  select(Unemployment,
+         YOY_01YOY_13)%>%
+  rename(2001=YOY_01,
+         2002=YOY_02,
+         2003=YOY_03,
+         2004=YOY_04,
+         2005=YOY_05,
+         2006=YOY_06,
+         2007=YOY_07,
+         2008=YOY_08,
+         2009=YOY_09,
+         2010=YOY_10,
+         2011=YOY_11,
+         2012=YOY_12,
+         2013=YOY_13)
+```
+
+```{r echo=FALSE,include=TRUE}
+AUS_edu_change_wider-AUS_edu_wider%>%
+   pivot_longer(cols = `2001`:`2013`,
+               names_to = year,
+               values_to = Percentage_of_Change)%>%
+  pivot_wider(id_cols = year,
+              names_from = Unemployment,
+              values_from = Percentage_of_Change)%>%
+  rename(unemploymen_with_advanced_education_change=
+           unemployment_with_advanced_education,
+         unemploymen_with_basic_education_change=
+           unemployment_with_basic_education)%>%
+  mutate(year=as.numeric(year))
+
+AUS_edu2-left_join(AUS_edu,AUS_edu_change_wider,by=year)
+
+AUS_edu2%>%
+  kable(caption = change) 
+
+```
 \section*{Country XX2 and YY2}
 
 \section*{Country XX3 and YY3}
