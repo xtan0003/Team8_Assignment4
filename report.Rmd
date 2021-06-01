@@ -1,10 +1,10 @@
 ---
 title: "Team8_Report"
 author:
-- familyname: XXXX
-  othernames: XXX
+- familyname: Chen
+  othernames: Peizhao
   address: Monash Universtidy
-  email: XXX
+  email: pche0072@student.monash.edu
   correspondingauthor: true
   qualifications:  XXX
 - familyname: XXXX
@@ -63,9 +63,9 @@ library(rockchalk)
 library(dplyr)
 ```
 
-\section*{}
+\section*{Overall analysis}
 
-```{r}
+```{r  echo=FALSE,include=FALSE}
 
 AUS <- read_csv(here::here("Data/AUS.csv")) %>% 
   dplyr::filter(year >= 1990 & year <= 2019) %>% 
@@ -80,7 +80,7 @@ AUS1 <- read_excel(here::here("Data/A4_data.xlsx")) %>%
          "Basic_edu"=`basic education`)
 ```
 
-```{r 1 ,eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+```{r g1,fig.cap="GDP Change from 1990 to 2020" }
 g1 <- AUS %>% 
   ggplot(aes(year,gdp_growth)) +
   geom_line()+
@@ -89,7 +89,9 @@ g1 <- AUS %>%
 g1
 ```
 
-```{r 1.1, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+From the given figure \@ref(fig:g1)
+
+```{r g2,fig.cap="Population Change from 1990 to 2020"}
 g2 <- AUS %>% 
   ggplot(aes(year,population)) +
   geom_line()+
@@ -100,7 +102,9 @@ g2 <- AUS %>%
 g2
 ```
 
-```{r 1.3, eval=TRUE, echo=FALSE, warning=FALSE, message=FALSE}
+From the given figure \@ref(fig:g2)
+
+```{r g3,fig.cap="Inflation Change from 1990 to 2020"}
 g3 <- AUS1 %>%
   ggplot(aes(year,  `Inflation, consumer prices (annual %)`)) +
   geom_line() +
@@ -109,7 +113,9 @@ g3 <- AUS1 %>%
 g3
 ```
 
-```{r}
+From the given figure \@ref(fig:g3)
+
+```{r echo=FALSE,include=FALSE}
 
 AUS_edu<-AUS%>%
   select(year,
@@ -187,7 +193,7 @@ AUS_edu_wider<- AUS_edu_longer%>%
          `2013`=YOY_13)
 ```
 
-```{r echo=FALSE,include=TRUE}
+```{r educhange,echo=FALSE,include=TRUE}
 AUS_edu_change_wider<-AUS_edu_wider%>%
    pivot_longer(cols = `2001`:`2013`,
                names_to = "year",
@@ -208,11 +214,13 @@ AUS_edu2<-left_join(AUS_edu,AUS_edu_change_wider,by="year")%>%
            unemployment_with_basic_education)
 
 AUS_edu2%>%
-  kable(caption = "Percent change in umemployment with different education level") 
+  kable(caption ="Percent change in umemployment with different education level") 
 
 ```
 
-```{r}
+From the given table \@ref(tab:educhange)
+
+```{r echo=FALSE,include=FALSE}
 
 AUS_sex_tab<-AUS1%>%
   select(year,
@@ -222,7 +230,7 @@ AUS_sex_tab<-AUS1%>%
 
 ```
 
-```{r}
+```{r echo=FALSE,include=FALSE}
 
 AUS_sex_longer<-AUS_sex_tab%>%
   pivot_longer(cols = -c('year'),
@@ -330,7 +338,7 @@ AUS_sex_wider<- AUS_sex_longer%>%
          `2013`=YOY_13)
 ```
 
-```{r echo=FALSE,include=TRUE}
+```{r sexchange,echo=FALSE,include=TRUE}
 AUS_sex_change_wider<-AUS_sex_wider%>%
    pivot_longer(cols = `1991`:`2013`,
                names_to = "year",
@@ -347,9 +355,12 @@ AUS_sex_change_wider<-AUS_sex_wider%>%
 AUS_sex2<-left_join(AUS_sex_tab,AUS_sex_change_wider,by="year")
 
 AUS_sex2%>%
-  kable(caption = "Percent change in umemployment by gender") 
+  kable(caption ="Percent change in umemployment by gender") 
 
 ```
+
+From the given table \@ref(tab:sexchange)
+
 
 \section*{Country XX2 and YY2}
 
