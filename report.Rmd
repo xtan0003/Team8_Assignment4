@@ -61,6 +61,7 @@ library(plotly)
 library(corrplot)
 library(rockchalk)
 library(dplyr)
+library(naniar)
 ```
 
 \section*{Overall analysis}
@@ -79,6 +80,17 @@ AUS1 <- read_excel(here::here("Data/A4_data.xlsx")) %>%
          "Advanced_edu"=`advanced education`,
          "Basic_edu"=`basic education`)
 ```
+
+```{r m1,echo=FALSE,include=TRUE}
+
+Miss_AUS1<-miss_var_summary(AUS1)
+
+kable(Miss_AUS1, booktabs = TRUE,
+  caption = 'Missing values in data')
+
+```
+
+From the given table \@ref(tab:m1)
 
 ```{r g1,fig.cap="GDP Change from 1990 to 2020" }
 g1 <- AUS %>% 
