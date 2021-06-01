@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.22)  1 JUN 2021 11:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.22)  1 JUN 2021 14:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1177,7 +1177,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<logo.jpg, id=4, 1601.985pt x 2002.48125pt>
+<logo.jpg, id=24, 1601.985pt x 2002.48125pt>
 File: logo.jpg Graphic file (type jpg)
 <use logo.jpg>
 Package pdftex.def Info: logo.jpg  used on input line 296.
@@ -1433,41 +1433,80 @@ Overfull \hbox (56.23262pt too wide) detected at line 296
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo.
 jpg>]
+<Figures/unemp-1.pdf, id=33, 355.3275pt x 277.035pt>
+File: Figures/unemp-1.pdf Graphic file (type pdf)
+<use Figures/unemp-1.pdf>
+Package pdftex.def Info: Figures/unemp-1.pdf  used on input line 307.
+(pdftex.def)             Requested size: 355.32661pt x 277.03432pt.
+LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
+(Font)              scaled to size 10.51207pt on input line 311.
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 10.51207pt on input line 311.
+<Figures/boxplot-1.pdf, id=35, 351.3125pt x 277.035pt>
+File: Figures/boxplot-1.pdf Graphic file (type pdf)
+<use Figures/boxplot-1.pdf>
+Package pdftex.def Info: Figures/boxplot-1.pdf  used on input line 321.
+(pdftex.def)             Requested size: 351.31163pt x 277.03432pt.
+[2 <./Figures/unemp-1.pdf>]
+<Figures/gender-1.pdf, id=54, 489.83pt x 279.0425pt>
+File: Figures/gender-1.pdf Graphic file (type pdf)
+<use Figures/gender-1.pdf>
+Package pdftex.def Info: Figures/gender-1.pdf  used on input line 337.
+(pdftex.def)             Requested size: 489.8288pt x 279.04181pt.
 
-LaTeX Warning: Empty bibliography on input line 304.
+Overfull \hbox (34.58472pt too wide) in paragraph at lines 337--338
+ [][] 
+ []
+
+[3 <./Figures/boxplot-1.pdf>]
+<Figures/cor-1.pdf, id=69, 502.87875pt x 473.77pt>
+File: Figures/cor-1.pdf Graphic file (type pdf)
+<use Figures/cor-1.pdf>
+Package pdftex.def Info: Figures/cor-1.pdf  used on input line 351.
+(pdftex.def)             Requested size: 502.87752pt x 473.76884pt.
+
+Overfull \hbox (47.63344pt too wide) in paragraph at lines 351--352
+[][]
+ []
 
 
-Package caption Warning: Unused \captionsetup[figure] on input line 60.
-See the caption package documentation for explanation.
+Underfull \hbox (badness 10000) in paragraph at lines 351--352
 
+ []
 
-Package caption Warning: Unused \captionsetup[table] on input line 61.
-See the caption package documentation for explanation.
+[4 <./Figures/gender-1.pdf>] [5 <./Figures/cor-1.pdf>]
 
-[2] (./report.aux)
+LaTeX Warning: Empty bibliography on input line 383.
+
+[6] (./report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: 8C2AFC0F03C7B16324A7E285925950A7;835.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25917 strings out of 478994
- 426394 string characters out of 5858184
- 1171713 words of memory out of 5000000
- 42828 multiletter control sequences out of 15000+600000
- 494072 words of font info for 188 fonts, out of 8000000 for 9000
+ 26089 strings out of 478994
+ 428839 string characters out of 5858184
+ 1175257 words of memory out of 5000000
+ 42900 multiletter control sequences out of 15000+600000
+ 503938 words of font info for 240 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,14n,75p,1195b,808s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
-exlive/2021/texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc}</usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr
-/local/texlive/2021/texmf-dist/fonts/type1/public/bera/fvsb8a.pfb></usr/local/t
-exlive/2021/texmf-dist/fonts/type1/public/bera/fvsr8a.pfb>
-Output written on report.pdf (2 pages, 622553 bytes).
+ 71i,14n,93p,1195b,808s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}{/usr/lo
+cal/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/202
+1/texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc}</usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/fontawesome/FontAwesome.pfb></usr/local/tex
+live/2021/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/bera/fvsb8a.pfb></usr/local/texlive/2021/texmf-
+dist/fonts/type1/public/bera/fvsr8a.pfb></usr/local/texlive/2021/texmf-dist/fon
+ts/type1/public/mathdesign/mdbch/md-chr8t.pfb>
+Output written on report.pdf (6 pages, 691403 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
- 23 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
- 61446 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 139 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
+ 77890 words of extra memory for PDF output out of 89155 (max. 10000000)
 

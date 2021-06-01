@@ -297,7 +297,86 @@
 
 \section*{Country XX1 and YY1"}
 
-\section*{Country XX2 and YY2}
+\section*{Exploring Unemployment Rate}
+
+\hypertarget{unemployment-rate-plot}{%
+\section{Unemployment rate plot}\label{unemployment-rate-plot}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Figures/unemp-1} 
+
+}
+
+\caption{Unemployment rate from 1990 to 2013}\label{fig:unemp}
+\end{figure}
+
+Figure\ref{fig:unemp} shows the changes in the unemployment rate from 19990 to 2013. First, there is a long-run downward trend in the unemployment rate, which is consistent with the idea that Australia's long term unemployment ratio is relatively low amongst other countries in the world. Second, there are two peaks in the graph. The first peak is around the early 1990s, at the time, Australia was experiencing a recession. The second peak is around 2008 due to the global financial crisis.
+
+\hypertarget{boxplot}{%
+\section{Boxplot}\label{boxplot}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Figures/boxplot-1} 
+
+}
+
+\caption{Box plot of the unemployment rate}\label{fig:boxplot}
+\end{figure}
+
+Figure \ref{fig:boxplot} shows the mean value of advanced education is higher than the mean of the basic education in the boxplot. It means that people with advanced education has a lower unemployment rate than people with basic education.
+
+We also notice that the average male unemployment rate is slightly higher than the female unemployment rate. To see this in details, we are going to plot the unemployment rate by genders.
+
+\hypertarget{unemployment-rate-by-genders}{%
+\section{Unemployment rate by genders}\label{unemployment-rate-by-genders}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Figures/gender-1} 
+
+}
+
+\caption{Unemployment rate by genders}\label{fig:gender}
+\end{figure}
+
+Figure \ref{fig:gender} shows that female unemployment rates have been consistently below male rates, despite there are some pick-ups in unemployment rates for females over the past few years
+
+\hypertarget{correlation}{%
+\section{Correlation}\label{correlation}}
+
+\begin{figure}[H]
+
+\includegraphics{Figures/cor-1} \hfill{}
+
+\caption{Correlation Graph}\label{fig:cor}
+\end{figure}
+
+We expected the unemployment rate has a negative association with GDP. The low unemployment rate would lead to an increase in GDP. Based on the Phillips curve, inflation and the unemployment rate have maintained an inverse relationship historically. Therefore, we expected to see an inverse relationship between inflation and the unemployment rate. Besides, low population growth may lead to a low unemployment rate.
+
+Figure \ref{fig:cor} shows the sign of coefficients as we expected except for the variable population. One possible reason is that the correlation graph could be wrong as it is just an estimation.
+
+\hypertarget{linear-model-for-the-unemployment-rate}{%
+\section{Linear model for the unemployment rate}\label{linear-model-for-the-unemployment-rate}}
+
+\begin{table}[H]
+
+\caption{\label{tab:model}The estimated linear modelfor the unemployment rate}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule{}
+  & Estimate & Std. Error & t value & Pr(>|t|)\\
+\midrule{}
+(Intercept) & 27.1939625 & 2.3091897 & 11.776409 & 0.0000000\\
+GDP\_growth & -0.3001259 & 0.1556400 & -1.928334 & 0.0681313\\
+Population & -0.0000009 & 0.0000001 & -8.371780 & 0.0000001\\
+`Inflation, consumer prices (annual \%)` & -0.4371258 & 0.1294037 & -3.378000 & 0.0029892\\
+\bottomrule{}
+\end{tabular}
+\end{table}
+
+Based on Figure \ref{fig:cor}, we model the factors that affect the employment rate. Table \ref{tab:model} shows that all the coefficients are significant under the 10\% level of significance. Finally, The value of R squared is equal to 79.95\%. Therefore, the 79.95\% of the variance for the unemployment rate can be explained by GDP\_growth, Population and Inflation.
 
 \section*{Country XX3 and YY3}
 
