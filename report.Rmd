@@ -63,7 +63,7 @@ library(rockchalk)
 library(dplyr)
 ```
 
-\section*{Country XX1 and YY1"}
+\section*{}
 
 ```{r}
 
@@ -110,20 +110,24 @@ g3
 ```
 
 ```{r}
-AUS_edu<-
+
+AUS_edu<-AUS%>%
+  select(year,
+         unemployment_with_advanced_education,
+         unemployment_with_basic_education)%>%
+  filter(year %in%c(2000:2013))
 
 
 ```
 
-
 ```{r echo=FALSE,include=FALSE}
 
-AUS_edu_longer-AUS_edu%>%
+AUS_edu_longer<-AUS_edu%>%
   pivot_longer(cols = -c('year'),
-               names_to = Unemployment,      
-               values_to = Percent)
+               names_to = "Unemployment",      
+               values_to = "Percent")
 
-AUS_edu_wider- AUS_edu_longer%>%
+AUS_edu_wider<- AUS_edu_longer%>%
   pivot_wider(id_cols = Unemployment,
               names_from = year,
               values_from = Percent)%>%
@@ -167,42 +171,186 @@ AUS_edu_wider- AUS_edu_longer%>%
            round((`2013`-`2012`)
                  /`2012`*100,2), "%"))%>%
   select(Unemployment,
-         YOY_01YOY_13)%>%
-  rename(2001=YOY_01,
-         2002=YOY_02,
-         2003=YOY_03,
-         2004=YOY_04,
-         2005=YOY_05,
-         2006=YOY_06,
-         2007=YOY_07,
-         2008=YOY_08,
-         2009=YOY_09,
-         2010=YOY_10,
-         2011=YOY_11,
-         2012=YOY_12,
-         2013=YOY_13)
+         YOY_01:YOY_13)%>%
+  rename(`2001`=YOY_01,
+         `2002`=YOY_02,
+         `2003`=YOY_03,
+         `2004`=YOY_04,
+         `2005`=YOY_05,
+         `2006`=YOY_06,
+         `2007`=YOY_07,
+         `2008`=YOY_08,
+         `2009`=YOY_09,
+         `2010`=YOY_10,
+         `2011`=YOY_11,
+         `2012`=YOY_12,
+         `2013`=YOY_13)
 ```
 
 ```{r echo=FALSE,include=TRUE}
-AUS_edu_change_wider-AUS_edu_wider%>%
+AUS_edu_change_wider<-AUS_edu_wider%>%
    pivot_longer(cols = `2001`:`2013`,
-               names_to = year,
-               values_to = Percentage_of_Change)%>%
+               names_to = "year",
+               values_to = "Percentage_of_Change")%>%
   pivot_wider(id_cols = year,
               names_from = Unemployment,
               values_from = Percentage_of_Change)%>%
-  rename(unemploymen_with_advanced_education_change=
+  rename(unemploy_adv_edu_change=
            unemployment_with_advanced_education,
-         unemploymen_with_basic_education_change=
+         unemploy_bas_edu_change=
            unemployment_with_basic_education)%>%
   mutate(year=as.numeric(year))
 
-AUS_edu2-left_join(AUS_edu,AUS_edu_change_wider,by=year)
+AUS_edu2<-left_join(AUS_edu,AUS_edu_change_wider,by="year")%>%
+  rename(unemploy_adv_edu =
+           unemployment_with_advanced_education,
+         unemploy_bas_edu =
+           unemployment_with_basic_education)
 
 AUS_edu2%>%
-  kable(caption = change) 
+  kable(caption = "Percent change in umemployment with different education level") 
 
 ```
+
+```{r}
+
+AUS_sex_tab<-AUS1%>%
+  select(year,
+         Unemploy_F,
+         Unemploy_M)
+
+
+```
+
+```{r}
+
+AUS_sex_longer<-AUS_sex_tab%>%
+  pivot_longer(cols = -c('year'),
+               names_to = "Unemployment",      
+               values_to = "Percent")
+
+
+AUS_sex_wider<- AUS_sex_longer%>%
+  pivot_wider(id_cols = Unemployment,
+              names_from = year,
+              values_from = Percent)%>%
+   mutate(YOY_91 = paste0( 
+           round((`1991`-`1990`)
+                 /`1990`*100,2),"%"),
+          YOY_92 = paste0( 
+           round((`1992`-`1991`)
+                 /`1991`*100,2),"%"),
+          YOY_93 = paste0( 
+           round((`1993`-`1992`)
+                 /`1992`*100,2),"%"),
+          YOY_94 = paste0( 
+           round((`1994`-`1993`)
+                 /`1993`*100,2),"%"),
+          YOY_95 = paste0( 
+           round((`1995`-`1994`)
+                 /`1994`*100,2),"%"),
+          YOY_96 = paste0( 
+           round((`1996`-`1995`)
+                 /`1995`*100,2),"%"),
+          YOY_97 = paste0( 
+           round((`1997`-`1996`)
+                 /`1996`*100,2),"%"),
+          YOY_98 = paste0( 
+           round((`1998`-`1997`)
+                 /`1997`*100,2),"%"),
+          YOY_99 = paste0( 
+           round((`1999`-`1998`)
+                 /`1998`*100,2),"%"),
+          YOY_00 = paste0( 
+           round((`2000`-`1999`)
+                 /`1999`*100,2),"%"),
+          YOY_01 = paste0( 
+           round((`2001`-`2000`)
+                 /`2000`*100,2),"%"),
+         YOY_02 = paste0( 
+           round((`2002`-`2001`)
+                 /`2001`*100,2),"%"),
+         YOY_03 = paste0( 
+           round((`2003`-`2002`)
+                 /`2002`*100,2),"%"),
+         YOY_04 = paste0( 
+           round((`2004`-`2003`)
+                 /`2003`*100,2),"%"),
+         YOY_05 = paste0( 
+           round((`2005`-`2004`)
+                 /`2004`*100,2),"%"),
+         YOY_06 = paste0( 
+           round((`2006`-`2005`)
+                 /`2005`*100,2),"%"),
+         YOY_07 = paste0( 
+           round((`2007`-`2006`)
+                 /`2006`*100,2),"%"),
+         YOY_08 = paste0( 
+           round((`2008`-`2007`)
+                 /`2007`*100,2),"%"),
+         YOY_09 = paste0( 
+           round((`2009`-`2008`)
+                 /`2008`*100,2),"%"),
+         YOY_10 = paste0( 
+           round((`2010`-`2009`)
+                 /`2009`*100,2),"%"),
+         YOY_11 = paste0( 
+           round((`2011`-`2010`)
+                 /`2010`*100,2),"%"),
+         YOY_12 = paste0( 
+           round((`2012`-`2011`)
+                 /`2011`*100,2), "%"),
+         YOY_13 = paste0( 
+           round((`2013`-`2012`)
+                 /`2012`*100,2), "%"))%>%
+  select(Unemployment,
+         YOY_91:YOY_13)%>%
+  rename(`1991`=YOY_91,
+         `1992`=YOY_92,
+         `1993`=YOY_93,
+         `1994`=YOY_94,
+         `1995`=YOY_95,
+         `1996`=YOY_96,
+         `1997`=YOY_97,
+         `1998`=YOY_98,
+         `1999`=YOY_99,
+         `2000`=YOY_00,
+         `2001`=YOY_01,
+         `2002`=YOY_02,
+         `2003`=YOY_03,
+         `2004`=YOY_04,
+         `2005`=YOY_05,
+         `2006`=YOY_06,
+         `2007`=YOY_07,
+         `2008`=YOY_08,
+         `2009`=YOY_09,
+         `2010`=YOY_10,
+         `2011`=YOY_11,
+         `2012`=YOY_12,
+         `2013`=YOY_13)
+```
+
+```{r echo=FALSE,include=TRUE}
+AUS_sex_change_wider<-AUS_sex_wider%>%
+   pivot_longer(cols = `1991`:`2013`,
+               names_to = "year",
+               values_to = "Percentage_of_Change")%>%
+  pivot_wider(id_cols = year,
+              names_from = Unemployment,
+              values_from = Percentage_of_Change)%>%
+  rename(Unemploy_F_Change=
+           Unemploy_F,
+         Unemploy_M_Change=
+           Unemploy_M)%>%
+  mutate(year=as.numeric(year))
+
+AUS_sex2<-left_join(AUS_sex_tab,AUS_sex_change_wider,by="year")
+
+AUS_sex2%>%
+  kable(caption = "Percent change in umemployment by gender") 
+
+```
+
 \section*{Country XX2 and YY2}
 
 \section*{Country XX3 and YY3}
