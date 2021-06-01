@@ -1,9 +1,9 @@
 ---
-title: "Team8_Report"
+title: "ETC5513_Assignment4"
 author:
 - familyname: XXXX
   othernames: XXX
-  address: Monash Universtidy
+  address: Monash Universidy
   email: XXX
   correspondingauthor: true
   qualifications:  XXX
@@ -58,8 +58,8 @@ library(rockchalk)
 library(dplyr)
 ```
 
-```{r ,echo=TRUE,include=FALSE}
 
+```{r ,echo=TRUE,include=FALSE}
 AUS <- read_csv(here::here("Data/AUS.csv")) %>% 
   dplyr::filter(year >= 1990 & year <= 2019) %>% 
   janitor::clean_names()
@@ -70,20 +70,21 @@ AUS1 <- read_excel(here::here("Data/A4_data.xlsx")) %>%
          "Unemploy_M"=`Unemployment male`,
          "Unemploy_T"=`Unemployment total`,
          "Advanced_edu"=`advanced education`,
-         "Basic_edu"=`basic education`)
+         "Basic_edu"=`basic education`,
+         "Inflation" = `Inflation, consumer prices (annual %)`)
 
 ```
 
-\section*{Country XX1 and YY1"}
+\section{Country XX1 and YY1"}
 
-\section*{Exploring Unemployment Rate}
+\section{Exploring Unemployment Rate}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.align = "center", fig.path = "Figures/")
 knitr::opts_chunk$set(fig.pos ="H", out.extra="")
 ```
 
-# Unemployment rate plot
+\subsection{Unemployment rate plot}
 
 ```{r unemp, fig.cap = "Unemployment rate from 1990 to 2013", warning = FALSE,fig.height =4, fig.width = 5,,echo=FALSE}
 g4 <- AUS1 %>%
@@ -96,7 +97,7 @@ g4
 
 Figure\@ref(fig:unemp) shows the changes in the unemployment rate from 19990 to 2013. First, there is a long-run downward trend in the unemployment rate, which is consistent with the idea that Australia’s long term unemployment ratio is relatively low amongst other countries in the world. Second, there are two peaks in the graph. The first peak is around the early 1990s, at the time, Australia was experiencing a recession. The second peak is around 2008 due to the global financial crisis. 
 
-# Boxplot
+\subsection{Boxplot}
 
 ```{r boxplot, fig.cap="Box plot of the unemployment rate",fig.height =4, fig.width = 5,echo=FALSE,warning=FALSE}
 boxplot <- AUS1 %>%
@@ -116,7 +117,8 @@ Figure \@ref(fig:boxplot) shows the mean value of advanced education is higher t
 
 We also notice that the average male unemployment rate is slightly higher than the female unemployment rate. To see this in details, we are going to plot the unemployment rate by genders.
 
-# Unemployment rate by genders
+\subsection{Unemployment rate by genders}
+
 
 ```{r gender, fig.cap="Unemployment rate by genders",fig.height =4, fig.width = 7,,echo=FALSE}
 AUS_sex<-AUS1%>%
@@ -134,16 +136,17 @@ g6 <- ggplot(AUS_sex,aes(x=year,y=Percent,by=Unemployment,color = factor(Unemplo
 g6
 ```
 
-Figure \@ref(fig:gender) shows that female unemployment rates have been consistently below male rates, despite there are some pick-ups in unemployment rates for females over the past few years
+Figure \@ref(fig:gender) shows that female unemployment rates have been consistently below male rates, despite there are some pick-ups in unemployment rates for females over the past few years.
 
-# Correlation
+\subsection{Correlation}
+
 
 ```{r step4,echo=FALSE,include=FALSE}
 
 correlation <- AUS1 %>%
   select(GDP_growth,
          Population,
-         `Inflation, consumer prices (annual %)`,
+         Inflation,
          Unemploy_T) %>% 
   cor() %>% round(2)
 correlation
@@ -151,7 +154,7 @@ correlation
 ```
 
 
-```{r cor, fig.cap="Correlation Graph",echo=FALSE,fig.height =7, fig.width = 7, fig.align='left'}
+```{r cor, fig.cap="Correlation Graph",echo=FALSE,fig.height =7, fig.width = 7, fig.align='center'}
 corrplot::corrplot(correlation)
 ```
 
@@ -159,20 +162,22 @@ We expected the unemployment rate has a negative association with GDP. The low u
 
 Figure \@ref(fig:cor) shows the sign of coefficients as we expected except for the variable population. One possible reason is that the correlation graph could be wrong as it is just an estimation. 
 
-# Linear model for the unemployment rate 
+
+\subsection{Linear model for the unemployment rate}
+
 
 ```{r model,fig.width=5, echo=FALSE}
-m <- lm(Unemploy_T ~  GDP_growth + Population + `Inflation, consumer prices (annual %)`, data = AUS1)
+m <- lm(Unemploy_T ~  GDP_growth + Population + Inflation, data = AUS1)
 d <- coef(summary(m))
 knitr::kable(d, booktabs = TRUE, caption = 'The estimated linear modelfor the unemployment rate')%>%
   kable_styling(c("basic",
                   fixed_thead = TRUE),
                 latex_options = "HOLD_position")
-
 ```
+
 Based on Figure \@ref(fig:cor), we model the factors that affect the employment rate. Table \@ref(tab:model) shows that all the coefficients are significant under the 10% level of significance. Finally, The value of R squared is equal to 79.95%. Therefore, the 79.95% of the variance for the unemployment rate can be explained by GDP_growth, Population and Inflation. 
 
-\section*{Country XX3 and YY3}
+\section{Country XX3 and YY3}
 
-
+(@basiceducation)
 
