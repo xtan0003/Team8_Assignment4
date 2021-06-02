@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 ---
 title: "ETC5513_Assignment4"
@@ -664,3 +665,676 @@ The regression model with stepwise regression method excluding highly correlated
 Through the above model analysis of variables. We can know that  the variables "population", "unemployment rate of basic education" and "unemployment rate of men" have a certain impact on Australia's GDP.
 
 
+=======
+---
+title: "ETC5513_Assignment4"
+author:
+- familyname: Chen
+  othernames: Peizhao
+  address: Monash University
+  email: pche0072@student.monash.edu
+  qualifications:  XXX
+- familyname: Tang
+  othernames: Xinyi
+  address: Monash University
+  email: xtan0003@student.monash.edu
+  qualifications: XXX
+- familyname: Li
+  othernames: Hao
+  address: Monash University
+  email: hlii0151@student.monash.edu
+  qualifications:  XXX
+department: Department of Econometrics and Business Statistics
+organization: Monash University
+bibliography: references.bib
+biblio-style: authoryear-comp
+linestretch: 1.5
+output:
+  bookdown::pdf_document2:
+    template: monashreport2.tex
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 8
+    includes:
+      in_header: preamble.tex
+    keep_tex: yes
+    number_sections: yes
+    citation_package: biblatex
+    toc: false
+---
+
+```{r , echo = FALSE, message = FALSE, warning = FALSE}
+# Libraries
+knitr::opts_chunk$set(echo=FALSE,
+                      include=TRUE, 
+                      messages = FALSE, 
+                      warning = FALSE)
+
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center", fig.path = "Figures/")
+knitr::opts_chunk$set(fig.pos ="H", out.extra="")
+
+library(palmerpenguins)
+library(tidyverse)
+library(janitor)
+library(imputeTS)
+library(broom)
+library(gglm)
+library(patchwork)
+library(flextable)
+library(kableExtra)
+library(datasets)
+library(tidyverse)
+library(datasets)
+library(here)
+library(readxl)
+library(plotly)
+library(corrplot)
+library(rockchalk)
+library(dplyr)
+library(naniar)
+```
+
+\section{Population and GDP analysis}
+
+\subsection{Introduction}
+
+This report aims to analyze factors related to GDP growth from 1990 to 2019 in Australia.There are several parts we want to figure out by analyzing the data: overall changes in unemployment,population,GDP growth,unemployment with different education level,and unemployment by genders from 1990 to 2020.The comparison between different categories of unemployment.The factors related to the GDP growth and their relations.
+The report is based on the Data of the world bank.The population date provided at @Population,and variables of unemployment rate for people with different level of education are extracted from @basiceducation and @advancededucation.Similarly unemployment rate of genders can be found at @femaleunemployment and @maleunemploymen.In terms of economic variables GDP and inflation,@GDP and @inflation are the sources of these mentioned variables.The data about total unemployment rate is from @totalunemployment.All data of ABS presented on this website is provided under a Creative Commons Attribution 4.0 International license, it is open data and free to share and adapt for any purpose even commercially.
+
+
+
+\subsection{Missing value in original data}
+
+```{r,echo=FALSE,include=FALSE}
+
+AUS <- read_csv(here::here("Data/AUS.csv")) %>% 
+  dplyr::filter(year >= 1990 & year <= 2019) %>% 
+  janitor::clean_names()
+
+AUS1 <- read_excel(here::here("Data/A4_data.xlsx")) %>% 
+  dplyr::filter(year >= 1990 & year <= 2013)%>%
+  rename("Unemploy_F"=`Unemployment female`,
+         "Unemploy_M"=`Unemployment male`,
+         "Unemploy_T"=`Unemployment total`,
+         "Advanced_edu"=`advanced education`,
+         "Basic_edu"=`basic education`,
+         "Inflation" = `Inflation, consumer prices (annual %)`)
+
+AUS3 <- read_excel(here::here("Data/AUS3.xlsx"))%>%
+  select(-`Country Name`)
+```
+
+```{r m1,echo=FALSE,include=TRUE, message=FALSE}
+
+Miss_AUS1<-miss_var_summary(AUS1)
+
+kable(Miss_AUS1, booktabs = TRUE,
+  caption = 'Missing values in data')%>%
+  kable_styling(c("basic",
+                  fixed_thead = TRUE),
+                latex_options = "HOLD_position")
+
+```
+
+From the given table \@ref(tab:m1)There are significant proportion of missing values in variables unemployment with advanced education and basic education.That means the research concerning these two variables should begin at 2000 .
+
+\subsection{Overall changes in GDP and Population}
+
+```{r g1,fig.cap="GDP Change from 1990 to 2020",echo=FALSE,include=TRUE, message=FALSE,fig.height =4, fig.width = 5}
+
+g1 <- AUS %>% 
+  ggplot(aes(year,gdp_growth)) +
+  geom_line()+
+  labs(x = "Year",
+       y= "Percent")
+
+g1
+```
+
+```{r P1,echo=FALSE,include=FALSE}
+
+AUS_P_tab<-AUS1%>%
+  select(year,
+          GDP_growth)
+
+
+AUS_P_longer<-AUS_P_tab%>%
+  pivot_longer(cols = -c('year'),
+               names_to = "GDP_growth",      
+               values_to = "Percent")
+
+
+AUS_P_wider<- AUS_P_longer%>%
+  pivot_wider(id_cols = GDP_growth,
+              names_from = year,
+              values_from = Percent)%>%
+   mutate(YOY_91 = paste0( 
+           round((`1991`-`1990`)
+                 /`1990`*100,2),"%"),
+          YOY_92 = paste0( 
+           round((`1992`-`1991`)
+                 /`1991`*100,2),"%"),
+          YOY_93 = paste0( 
+           round((`1993`-`1992`)
+                 /`1992`*100,2),"%"),
+          YOY_94 = paste0( 
+           round((`1994`-`1993`)
+                 /`1993`*100,2),"%"),
+          YOY_95 = paste0( 
+           round((`1995`-`1994`)
+                 /`1994`*100,2),"%"),
+          YOY_96 = paste0( 
+           round((`1996`-`1995`)
+                 /`1995`*100,2),"%"),
+          YOY_97 = paste0( 
+           round((`1997`-`1996`)
+                 /`1996`*100,2),"%"),
+          YOY_98 = paste0( 
+           round((`1998`-`1997`)
+                 /`1997`*100,2),"%"),
+          YOY_99 = paste0( 
+           round((`1999`-`1998`)
+                 /`1998`*100,2),"%"),
+          YOY_00 = paste0( 
+           round((`2000`-`1999`)
+                 /`1999`*100,2),"%"),
+          YOY_01 = paste0( 
+           round((`2001`-`2000`)
+                 /`2000`*100,2),"%"),
+         YOY_02 = paste0( 
+           round((`2002`-`2001`)
+                 /`2001`*100,2),"%"),
+         YOY_03 = paste0( 
+           round((`2003`-`2002`)
+                 /`2002`*100,2),"%"),
+         YOY_04 = paste0( 
+           round((`2004`-`2003`)
+                 /`2003`*100,2),"%"),
+         YOY_05 = paste0( 
+           round((`2005`-`2004`)
+                 /`2004`*100,2),"%"),
+         YOY_06 = paste0( 
+           round((`2006`-`2005`)
+                 /`2005`*100,2),"%"),
+         YOY_07 = paste0( 
+           round((`2007`-`2006`)
+                 /`2006`*100,2),"%"),
+         YOY_08 = paste0( 
+           round((`2008`-`2007`)
+                 /`2007`*100,2),"%"),
+         YOY_09 = paste0( 
+           round((`2009`-`2008`)
+                 /`2008`*100,2),"%"),
+         YOY_10 = paste0( 
+           round((`2010`-`2009`)
+                 /`2009`*100,2),"%"),
+         YOY_11 = paste0( 
+           round((`2011`-`2010`)
+                 /`2010`*100,2),"%"),
+         YOY_12 = paste0( 
+           round((`2012`-`2011`)
+                 /`2011`*100,2), "%"),
+         YOY_13 = paste0( 
+           round((`2013`-`2012`)
+                 /`2012`*100,2), "%"))%>%
+  select(GDP_growth,
+         YOY_91:YOY_13)%>%
+  rename(`1991`=YOY_91,
+         `1992`=YOY_92,
+         `1993`=YOY_93,
+         `1994`=YOY_94,
+         `1995`=YOY_95,
+         `1996`=YOY_96,
+         `1997`=YOY_97,
+         `1998`=YOY_98,
+         `1999`=YOY_99,
+         `2000`=YOY_00,
+         `2001`=YOY_01,
+         `2002`=YOY_02,
+         `2003`=YOY_03,
+         `2004`=YOY_04,
+         `2005`=YOY_05,
+         `2006`=YOY_06,
+         `2007`=YOY_07,
+         `2008`=YOY_08,
+         `2009`=YOY_09,
+         `2010`=YOY_10,
+         `2011`=YOY_11,
+         `2012`=YOY_12,
+         `2013`=YOY_13)
+```
+
+```{r Ichange,echo=FALSE,include=TRUE,message=FALSE}
+
+AUS_P_change_wider<-AUS_P_wider%>%
+   pivot_longer(cols = `1991`:`2013`,
+               names_to = "year",
+               values_to = "Percentage_of_Change")%>%
+  pivot_wider(id_cols = year,
+              names_from = GDP_growth,
+              values_from = Percentage_of_Change)%>%
+  rename(GDP_growth_Change=
+           GDP_growth)%>%
+  mutate(year=as.numeric(year))
+
+AUS_P2<-left_join(AUS_P_tab,AUS_P_change_wider,by="year")%>%
+  tail(7)
+
+AUS_P2%>%
+  kable(caption ="Percent change in GDP growth")%>%
+   kable_styling(c("basic",
+                  fixed_thead = TRUE),
+                latex_options = "HOLD_position")
+
+```
+
+
+From the given figure \@ref(fig:g1),only the beginning of 1990s has experienced a negative growth which was about -0.3%,and the following growth of years was fluctuating around 2.5% even after 2008 the year of financial crisis the growth is still positive.The negative growth in 1990s attribute to recession mainly resulted from Australia's efforts to address excess domestic demand,curb speculative behaviours in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation.
+
+```{r g2,fig.cap="Population Change from 1990 to 2020",fig.height =4, fig.width = 5}
+
+g2 <- AUS %>% 
+  ggplot(aes(year,population)) +
+  geom_line()+
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = "Year",
+       y = "Population")
+
+g2
+```
+
+```{r echo=FALSE,include=FALSE,message=FALSE}
+
+AUS_P_tab<-AUS1%>%
+  select(year,
+         Population)
+
+
+AUS_P_longer<-AUS_P_tab%>%
+  pivot_longer(cols = -c('year'),
+               names_to = "Population",      
+               values_to = "Percent")
+
+
+AUS_P_wider<- AUS_P_longer%>%
+  pivot_wider(id_cols = Population,
+              names_from = year,
+              values_from = Percent)%>%
+   mutate(YOY_91 = paste0( 
+           round((`1991`-`1990`)
+                 /`1990`*100,2),"%"),
+          YOY_92 = paste0( 
+           round((`1992`-`1991`)
+                 /`1991`*100,2),"%"),
+          YOY_93 = paste0( 
+           round((`1993`-`1992`)
+                 /`1992`*100,2),"%"),
+          YOY_94 = paste0( 
+           round((`1994`-`1993`)
+                 /`1993`*100,2),"%"),
+          YOY_95 = paste0( 
+           round((`1995`-`1994`)
+                 /`1994`*100,2),"%"),
+          YOY_96 = paste0( 
+           round((`1996`-`1995`)
+                 /`1995`*100,2),"%"),
+          YOY_97 = paste0( 
+           round((`1997`-`1996`)
+                 /`1996`*100,2),"%"),
+          YOY_98 = paste0( 
+           round((`1998`-`1997`)
+                 /`1997`*100,2),"%"),
+          YOY_99 = paste0( 
+           round((`1999`-`1998`)
+                 /`1998`*100,2),"%"),
+          YOY_00 = paste0( 
+           round((`2000`-`1999`)
+                 /`1999`*100,2),"%"),
+          YOY_01 = paste0( 
+           round((`2001`-`2000`)
+                 /`2000`*100,2),"%"),
+         YOY_02 = paste0( 
+           round((`2002`-`2001`)
+                 /`2001`*100,2),"%"),
+         YOY_03 = paste0( 
+           round((`2003`-`2002`)
+                 /`2002`*100,2),"%"),
+         YOY_04 = paste0( 
+           round((`2004`-`2003`)
+                 /`2003`*100,2),"%"),
+         YOY_05 = paste0( 
+           round((`2005`-`2004`)
+                 /`2004`*100,2),"%"),
+         YOY_06 = paste0( 
+           round((`2006`-`2005`)
+                 /`2005`*100,2),"%"),
+         YOY_07 = paste0( 
+           round((`2007`-`2006`)
+                 /`2006`*100,2),"%"),
+         YOY_08 = paste0( 
+           round((`2008`-`2007`)
+                 /`2007`*100,2),"%"),
+         YOY_09 = paste0( 
+           round((`2009`-`2008`)
+                 /`2008`*100,2),"%"),
+         YOY_10 = paste0( 
+           round((`2010`-`2009`)
+                 /`2009`*100,2),"%"),
+         YOY_11 = paste0( 
+           round((`2011`-`2010`)
+                 /`2010`*100,2),"%"),
+         YOY_12 = paste0( 
+           round((`2012`-`2011`)
+                 /`2011`*100,2), "%"),
+         YOY_13 = paste0( 
+           round((`2013`-`2012`)
+                 /`2012`*100,2), "%"))%>%
+  select(Population,
+         YOY_91:YOY_13)%>%
+  rename(`1991`=YOY_91,
+         `1992`=YOY_92,
+         `1993`=YOY_93,
+         `1994`=YOY_94,
+         `1995`=YOY_95,
+         `1996`=YOY_96,
+         `1997`=YOY_97,
+         `1998`=YOY_98,
+         `1999`=YOY_99,
+         `2000`=YOY_00,
+         `2001`=YOY_01,
+         `2002`=YOY_02,
+         `2003`=YOY_03,
+         `2004`=YOY_04,
+         `2005`=YOY_05,
+         `2006`=YOY_06,
+         `2007`=YOY_07,
+         `2008`=YOY_08,
+         `2009`=YOY_09,
+         `2010`=YOY_10,
+         `2011`=YOY_11,
+         `2012`=YOY_12,
+         `2013`=YOY_13)
+```
+
+```{r Tchange,echo=FALSE,include=TRUE,message=FALSE}
+
+AUS_P_change_wider<-AUS_P_wider%>%
+   pivot_longer(cols = `1991`:`2013`,
+               names_to = "year",
+               values_to = "Percentage_of_Change")%>%
+  pivot_wider(id_cols = year,
+              names_from = Population,
+              values_from = Percentage_of_Change)%>%
+  rename(Population_Change=
+           Population)%>%
+  mutate(year=as.numeric(year))
+
+AUS_P2<-left_join(AUS_P_tab,AUS_P_change_wider,by="year")%>%
+  slice(14:21)
+
+AUS_P2%>%
+  kable(caption ="Percent change in Population")%>%
+   kable_styling(c("basic",
+                  fixed_thead = TRUE),
+                latex_options = "HOLD_position")
+
+```
+
+From the given figure \@ref(fig:g2), the Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.Australia has population growth rate around 1.48% averagely according to World Bank  data.Migration and birth rate minus mortality rate were included in this growth rate.
+
+\subsection{Further analysis between GDP and population}
+
+```{r Achange,echo=FALSE,include=TRUE,message=FALSE}
+
+AUS_A_change_wider<-AUS3%>%
+   pivot_longer(cols = `1990`:`2018`,
+               names_to = "year",
+               values_to = "Percentage")%>%
+  pivot_wider(id_cols = year,
+              names_from = `Series Name`,
+              values_from = Percentage)%>%
+  rename(`0-14`=`Population aged 0-14 (% of total population)`,
+         `15-64` = `Population aged 15-64 (% of total population)`,
+         `65 over`= `Population 65 years and older (% of total population)`)%>%
+  mutate(year=as.numeric(year))
+
+AUS_A_P<- AUS_A_change_wider%>%
+  slice(1:1,
+        6:6,
+        11:11,
+        20:20,
+        25:25,
+        29:29)
+
+AUS_A_P%>%
+  kable(caption ="Percent of Population in different age group")%>%
+   kable_styling(c("basic",
+                  fixed_thead = TRUE),
+                latex_options = "HOLD_position")
+  
+  
+
+```
+
+```{r A1,echo=FALSE,include=TRUE,fig.cap="Population age proportion",fig.height =4, fig.width = 5}
+
+AUS_A_change_wider%>%
+  select(-`International migrants (% of population)`)%>%
+  pivot_longer(cols = -year,
+               names_to = "Age_Group",
+               values_to = "Percentage")%>%
+  ggplot(aes(x = year,
+             y = Percentage,
+             group = Age_Group,
+             color = factor(Age_Group)))+
+  geom_line()+
+  theme(axis.title =  element_text(size=12,face = "bold"),
+        axis.text.x =   element_text(angle=90, 
+                                     hjust = 2,
+                                     size=8),
+        strip.text.x = element_text(size=8, angle=0))
+  
+
+```
+
+```{r lm1,message=FALSE,include=TRUE,echo=FALSE,fig.height =4, fig.width = 5}
+Pop_lm<-left_join(AUS_A_change_wider,AUS,by="year")%>%
+  mutate(across(everything(),na_mean))%>%
+  select(gdp_growth,
+         `0-14`,
+         `15-64`,
+         `65 over`)
+
+Pop_lm %>% 
+  pivot_longer(-gdp_growth,names_to = "vars",values_to = "value") %>% 
+  ggplot(aes(value,gdp_growth,color = vars)) +
+  geom_point() +
+  facet_wrap(~ vars,scales = "free")+
+  geom_smooth(method = lm) +
+  guides(color = F) +
+  labs(x = "variables",y = "percentage of GDP change")+
+  theme(strip.text.x = element_text(size = 8))
+
+```
+
+```{r fig.cap="model"}
+Pop_model <- lm(gdp_growth ~ .,data = Pop_lm)
+Pop_model %>% 
+  tidy() %>% 
+  mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>% 
+  regulartable()
+
+```
+
+\section{Exploring Unemployment Rate}
+
+\subsection{Unemployment rate plot}
+
+```{r unemp, fig.cap = "Unemployment rate from 1990 to 2013", warning = FALSE,fig.height =4, fig.width = 5,echo=FALSE,message=FALSE}
+g4 <- AUS1 %>%
+  ggplot(aes(year, Unemploy_T)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "unemployment rate")
+g4
+```
+
+Figure\@ref(fig:unemp) shows the changes in the unemployment rate from 19990 to 2013. First, there is a long-run downward trend in the unemployment rate, which is consistent with the idea that Australia’s long term unemployment ratio is relatively low among other countries in the world. Second, there are two peaks in the graph. The first peak is around the early 1990s, at the time, Australia was experiencing a recession. The second peak is around 2008 due to the global financial crisis. 
+
+\subsection{Boxplot}
+
+```{r boxplot, fig.cap="Box plot of the unemployment rate",fig.height =4, fig.width = 5,echo=FALSE,warning=FALSE,message=FALSE}
+
+boxplot <- AUS1 %>%
+  select(Unemploy_T,
+         Unemploy_F ,
+         Unemploy_M,
+         Advanced_edu,
+         Basic_edu) %>%
+  gather(key = "variable", value = "value") %>%
+  ggplot() +
+  geom_boxplot(aes(x = variable, y = value))
+boxplot
+
+```
+
+Figure \@ref(fig:boxplot) shows the mean value of advanced education is higher than the mean of the basic education in the boxplot. It means that people with advanced education has a lower unemployment rate than people with basic education.
+
+We also notice that the average male unemployment rate is slightly higher than the female unemployment rate. To see this in details, we are going to plot the unemployment rate by genders.
+
+\subsection{Unemployment rate by genders}
+
+
+```{r gender, fig.cap="Unemployment rate by genders",fig.height =4, fig.width = 7,,echo=FALSE,message=FALSE}
+AUS_sex<-AUS1%>%
+  select(year,
+         Unemploy_F,
+         Unemploy_M)%>%
+  filter(year%in%c("1979":"2019"))%>%
+  pivot_longer(cols = -c('year'),
+               names_to = "Unemployment",      
+               values_to = "Percent")
+
+g6 <- ggplot(AUS_sex,aes(x=year,y=Percent,by=Unemployment,color = factor(Unemployment)))+
+  geom_line()+
+  labs(color = "Unemployment by Genders") 
+g6
+```
+
+Figure \@ref(fig:gender) shows that female unemployment rates have been consistently below male rates, despite there are some pick-ups in unemployment rates for females over the past few years.
+
+\subsection{Correlation}
+
+
+```{r step4,echo=FALSE,include=FALSE,message=FALSE}
+
+correlation <- AUS1 %>%
+  select(GDP_growth,
+         Population,
+         Inflation,
+         Unemploy_T) %>% 
+  cor() %>% round(2)
+correlation
+
+```
+
+
+```{r cor, fig.cap="Correlation Graph",echo=FALSE,fig.height =7, fig.width = 7, fig.align='center',message=FALSE}
+corrplot::corrplot(correlation)
+```
+
+We expected the unemployment rate has a negative association with GDP. The low unemployment rate would lead to an increase in GDP. Based on the Phillips curve, inflation and the unemployment rate have maintained an inverse relationship historically. Therefore, we expected to see an inverse relationship between inflation and the unemployment rate. Besides, low population growth may lead to a low unemployment rate. 
+
+Figure \@ref(fig:cor) shows the sign of coefficients as we expected except for the variable population. One possible reason is that the correlation graph could be wrong as it is just an estimation. 
+
+
+\subsection{Linear model for the unemployment rate}
+
+
+```{r model,fig.width=5, echo=FALSE, message=FALSE}
+m <- lm(Unemploy_T ~  GDP_growth + Population + Inflation, data = AUS1)
+d <- coef(summary(m))
+knitr::kable(d, booktabs = TRUE, caption = 'The estimated linear modelfor the unemployment rate')%>%
+  kable_styling(c("basic",
+                  fixed_thead = TRUE),
+                latex_options = "HOLD_position")
+```
+
+Based on Figure \@ref(fig:cor), we model the factors that affect the employment rate. Table \@ref(tab:model) shows that all the coefficients are significant under the 10% level of significance. Finally, The value of R squared is equal to 79.95%. Therefore, the 79.95% of the variance for the unemployment rate can be explained by GDP_growth, Population and Inflation. 
+
+\section{The influence of different factors on GDP}
+
+
+```{r echo=FALSE, message=FALSE}
+AUS <- read_csv("Data/AUS.csv") %>% 
+  dplyr::filter(year >= 1990 & year <= 2019) %>% 
+  janitor::clean_names()
+```
+
+
+\subsection{The relationship between  different varaiables}
+
+Because there are missing values in some years of some variables in the original data, which will affect the estimation of the regression model, it is necessary to interpolate the missing values. Here I use the mean to interpolate. At the same time, I deal with the variable `population` in millions of units.And I made some single liner regression in figure \@ref(fig:lin) to judge whether they have a connection. 
+
+```{r lin,fig.width=6, fig.cap= "liner model", message=FALSE}
+AUS_lm <- AUS %>% 
+  mutate(across(everything(),na_mean)) %>% 
+  dplyr::select(-year) %>% 
+  mutate(population = population/100000)
+AUS_lm %>% 
+  pivot_longer(-gdp_growth,names_to = "vars",values_to = "value") %>% 
+  ggplot(aes(value,gdp_growth,color = vars)) +
+  geom_point() +
+  facet_wrap(~ vars,scales = "free")+
+  geom_smooth(method = lm) +
+  guides(color = F) +
+  labs(x = "variables",y = "percentage of GDP change")+
+  theme(strip.text.x = element_text(size = 8))
+```
+
+\subsection{judgement about the regression model}
+
+```{r fig.cap= "multi"}
+lm_model <- lm(gdp_growth ~ .,data = AUS_lm)
+lm_model %>% 
+  tidy() %>% 
+  mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>% 
+  regulartable()
+```
+
+\subsection{Variance Inflation Factors}
+It can be found that in table most variables are not significant when using the whole model for regression. I think this is due to the existence of multicollinearity in the data. Let's judge whether there is serious multicollinearity.
+
+```{r inf, fig.cap= "inflation", message=FALSE}
+lm_model %>%
+  car::vif() %>%
+  as.data.frame() %>% 
+  setNames("Variance Inflation Factors") %>% 
+  rownames_to_column("Variables") %>% 
+  regulartable()
+```
+
+By calculating the variance expansion factor in table  we can find that the model has serious multicollinearity, so we need to delete the variables.
+
+\subsection{diagnostic diagram}
+```{r fig.cap="residuals", fig.width=6}
+lm_steped <- step(lm_model,trace = 0)
+gglm(lm_steped)
+lm_steped %>% 
+  tidy() %>% 
+  mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>%
+  regulartable()
+```
+
+The regression model with stepwise regression method excluding highly correlated variables shows that variables `population`,`unemployment_with_basic_education`,`unemployment_male` have a significant impact on GDP growth at the significance level of 10%. To be specific, every 1 million increase in `population` will reduce GDP by 0.0229%. This may be because the Australian government is unable to provide sufficient employment opportunities and the demographic dividend has not been fully released. From the perspective of variable `unemployment_with_basic_education`, every 1% increase in the employment rate of people with basic education will increase the GDP growth by 0.38% on average. This main reason may be the industrial structure in Australia is undergoing adjustment, and some industries are eliminating people with only basic education to reduce the labor cost. Finally, every 1% increase in male unemployment rate will reduce GDP growth by an average of 0.34%, which shows that male workers still dominate all walks of life in Australia.
+Through the above model analysis of variables. We can know that  the variables "population", "unemployment rate of basic education" and "unemployment rate of men" have a certain impact on Australia's GDP.
+
+@basiceducation
+@advancededucation
+@GDP
+@Population
+@femaleunemployment
+@maleunemployment
+@totalunemployment
+@inflation
+>>>>>>> 0a789ca90cd220863b1d599cd9ae6c08f5472995
