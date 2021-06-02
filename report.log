@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.22)  3 JUN 2021 06:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.22)  3 JUN 2021 08:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1211,7 +1211,29 @@ Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
-(./report.bbl)
+(./report.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                advancededucation.Similarly
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                maleunemploymen.In
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                totalunemployment.All
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 298.
 Package biblatex Info: Reference segment=0 on input line 298.
 Package caption Info: Begin \AtBeginDocument code.
@@ -1248,7 +1270,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-<logo.jpg, id=52, 1601.985pt x 2002.48125pt>
+<logo.jpg, id=68, 1601.985pt x 2002.48125pt>
 File: logo.jpg Graphic file (type jpg)
 <use logo.jpg>
 Package pdftex.def Info: logo.jpg  used on input line 299.
@@ -1505,146 +1527,130 @@ Overfull \hbox (56.23262pt too wide) detected at line 299
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo.
 jpg>]
 LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
-(Font)              scaled to size 10.51207pt on input line 311.
+(Font)              scaled to size 10.51207pt on input line 306.
 LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 10.51207pt on input line 311.
-
-LaTeX Warning: Reference `fig:g1' on page 2 undefined on input line 333.
-
+(Font)              scaled to size 10.51207pt on input line 312.
 [2]
-
-LaTeX Warning: Reference `fig:g2' on page 3 undefined on input line 335.
-
-
-LaTeX Warning: Reference `fig:g3' on page 3 undefined on input line 337.
-
-
-Overfull \hbox (62.35593pt too wide) in paragraph at lines 343--376
- [][] 
- []
-
-
-LaTeX Warning: Reference `tab:educhange' on page 3 undefined on input line 378.
-
-
-[3] [4]
-<Figures/unemp-1.pdf, id=83, 355.3275pt x 277.035pt>
+<Figures/g1-1.pdf, id=96, 356.33125pt x 277.035pt>
+File: Figures/g1-1.pdf Graphic file (type pdf)
+<use Figures/g1-1.pdf>
+Package pdftex.def Info: Figures/g1-1.pdf  used on input line 338.
+(pdftex.def)             Requested size: 356.33037pt x 277.03432pt.
+[3 <./Figures/g1-1.pdf>]
+<Figures/g2-1.pdf, id=111, 356.33125pt x 277.035pt>
+File: Figures/g2-1.pdf Graphic file (type pdf)
+<use Figures/g2-1.pdf>
+Package pdftex.def Info: Figures/g2-1.pdf  used on input line 374.
+(pdftex.def)             Requested size: 356.33037pt x 277.03432pt.
+[4 <./Figures/g2-1.pdf>]
+<Figures/unemp-1.pdf, id=126, 355.3275pt x 277.035pt>
 File: Figures/unemp-1.pdf Graphic file (type pdf)
 <use Figures/unemp-1.pdf>
-Package pdftex.def Info: Figures/unemp-1.pdf  used on input line 508.
+Package pdftex.def Info: Figures/unemp-1.pdf  used on input line 418.
 (pdftex.def)             Requested size: 355.32661pt x 277.03432pt.
-[5]
-<Figures/boxplot-1.pdf, id=90, 351.3125pt x 277.035pt>
+<Figures/boxplot-1.pdf, id=128, 351.3125pt x 277.035pt>
 File: Figures/boxplot-1.pdf Graphic file (type pdf)
 <use Figures/boxplot-1.pdf>
-Package pdftex.def Info: Figures/boxplot-1.pdf  used on input line 521.
+Package pdftex.def Info: Figures/boxplot-1.pdf  used on input line 431.
 (pdftex.def)             Requested size: 351.31163pt x 277.03432pt.
-[6 <./Figures/unemp-1.pdf>]
-<Figures/gender-1.pdf, id=104, 489.83pt x 279.0425pt>
+[5 <./Figures/unemp-1.pdf>]
+<Figures/gender-1.pdf, id=142, 489.83pt x 279.0425pt>
 File: Figures/gender-1.pdf Graphic file (type pdf)
 <use Figures/gender-1.pdf>
-Package pdftex.def Info: Figures/gender-1.pdf  used on input line 536.
+Package pdftex.def Info: Figures/gender-1.pdf  used on input line 446.
 (pdftex.def)             Requested size: 489.8288pt x 279.04181pt.
 
-Overfull \hbox (34.58472pt too wide) in paragraph at lines 536--537
+Overfull \hbox (34.58472pt too wide) in paragraph at lines 446--447
  [][] 
  []
 
-[7 <./Figures/boxplot-1.pdf>]
-<Figures/cor-1.pdf, id=119, 496.85625pt x 457.71pt>
+[6 <./Figures/boxplot-1.pdf>]
+<Figures/cor-1.pdf, id=156, 359.3425pt x 331.2375pt>
 File: Figures/cor-1.pdf Graphic file (type pdf)
 <use Figures/cor-1.pdf>
-Package pdftex.def Info: Figures/cor-1.pdf  used on input line 549.
-(pdftex.def)             Requested size: 496.85503pt x 457.7089pt.
-
-Overfull \hbox (41.61095pt too wide) in paragraph at lines 549--550
- [][] 
- []
-
-[8 <./Figures/gender-1.pdf>] [9 <./Figures/cor-1.pdf>]
+Package pdftex.def Info: Figures/cor-1.pdf  used on input line 460.
+(pdftex.def)             Requested size: 359.34161pt x 331.23668pt.
+[7 <./Figures/gender-1.pdf>] [8 <./Figures/cor-1.pdf>]
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.24173pt on input line 584.
-<Figures/lin-1.pdf, id=148, 427.5975pt x 349.305pt>
+(Font)              scaled to size 9.24173pt on input line 495.
+<Figures/lin-1.pdf, id=187, 427.5975pt x 349.305pt>
 File: Figures/lin-1.pdf Graphic file (type pdf)
 <use Figures/lin-1.pdf>
-Package pdftex.def Info: Figures/lin-1.pdf  used on input line 588.
+Package pdftex.def Info: Figures/lin-1.pdf  used on input line 499.
 (pdftex.def)             Requested size: 427.59645pt x 349.30414pt.
-[10]
+[9]
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 10.56007pt on input line 609.
+(Font)              scaled to size 10.56007pt on input line 520.
 
-Overfull \hbox (136.88916pt too wide) in paragraph at lines 635--635
+Overfull \hbox (136.88916pt too wide) in paragraph at lines 546--546
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_advanced_education[]|  
  []
 
 
-Overfull \hbox (116.49156pt too wide) in paragraph at lines 641--641
+Overfull \hbox (116.49156pt too wide) in paragraph at lines 552--552
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_basic_education[]|  
  []
 
 
-Overfull \hbox (49.37927pt too wide) in paragraph at lines 647--647
+Overfull \hbox (49.37927pt too wide) in paragraph at lines 558--558
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_female[]|  
  []
 
 
-Overfull \hbox (40.976pt too wide) in paragraph at lines 653--653
+Overfull \hbox (40.976pt too wide) in paragraph at lines 564--564
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_male[]|  
  []
 
 
-Overfull \hbox (136.88916pt too wide) in paragraph at lines 695--695
+Overfull \hbox (136.88916pt too wide) in paragraph at lines 606--606
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_advanced_education[]|  
  []
 
 
-Overfull \hbox (116.49156pt too wide) in paragraph at lines 701--701
+Overfull \hbox (116.49156pt too wide) in paragraph at lines 612--612
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_basic_education[]|  
  []
 
 
-Overfull \hbox (49.37927pt too wide) in paragraph at lines 707--707
+Overfull \hbox (49.37927pt too wide) in paragraph at lines 618--618
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_female[]|  
  []
 
 
-Overfull \hbox (40.976pt too wide) in paragraph at lines 713--713
+Overfull \hbox (40.976pt too wide) in paragraph at lines 624--624
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_male[]|  
  []
 
-[11 <./Figures/lin-1.pdf>]
-<Figures/unnamed-chunk-10-1.pdf, id=173, 414.54875pt x 341.275pt>
-File: Figures/unnamed-chunk-10-1.pdf Graphic file (type pdf)
-<use Figures/unnamed-chunk-10-1.pdf>
-Package pdftex.def Info: Figures/unnamed-chunk-10-1.pdf  used on input line 724
-.
+[10 <./Figures/lin-1.pdf>]
+<Figures/unnamed-chunk-7-1.pdf, id=211, 414.54875pt x 341.275pt>
+File: Figures/unnamed-chunk-7-1.pdf Graphic file (type pdf)
+<use Figures/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: Figures/unnamed-chunk-7-1.pdf  used on input line 635.
+
 (pdftex.def)             Requested size: 414.54773pt x 341.27415pt.
-[12]
-Overfull \hbox (116.49156pt too wide) in paragraph at lines 768--768
+[11]
+Overfull \hbox (116.49156pt too wide) in paragraph at lines 679--679
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_basic_education[]|  
  []
 
 
-Overfull \hbox (40.976pt too wide) in paragraph at lines 774--774
+Overfull \hbox (40.976pt too wide) in paragraph at lines 685--685
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_male[]|  
  []
 
-[13 <./Figures/unnamed-chunk-10-1.pdf>] [14] (./report.aux)
-
-LaTeX Warning: There were undefined references.
-
+[12 <./Figures/unnamed-chunk-7-1.pdf>] [13] (./report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 473FF55E71E9E185C6470CF64A8581F3;2521.
+(rerunfilecheck)             Checksum: 1196F7F563AA6B9E22C39A81A64A2818;3577.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26613 strings out of 478994
- 437847 string characters out of 5858184
- 1194493 words of memory out of 5000000
- 43292 multiletter control sequences out of 15000+600000
- 512918 words of font info for 312 fonts, out of 8000000 for 9000
+ 26604 strings out of 478994
+ 437635 string characters out of 5858184
+ 1190391 words of memory out of 5000000
+ 43293 multiletter control sequences out of 15000+600000
+ 512047 words of font info for 303 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,14n,93p,1195b,1447s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
@@ -1658,10 +1664,10 @@ e/2021/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2
 dist/fonts/type1/public/bera/fvsb8a.pfb></usr/local/texlive/2021/texmf-dist/fon
 ts/type1/public/bera/fvsr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /public/mathdesign/mdbch/md-chr8t.pfb>
-Output written on report.pdf (14 pages, 752554 bytes).
+Output written on report.pdf (13 pages, 759342 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 231 compressed objects within 3 object streams
+ 293 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
  50 named destinations out of 1000 (max. 500000)
- 84100 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 84142 words of extra memory for PDF output out of 89155 (max. 10000000)
 
