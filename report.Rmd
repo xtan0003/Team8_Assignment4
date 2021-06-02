@@ -512,7 +512,7 @@ g4 <- AUS1 %>%
 g4
 ```
 
-Figure\@ref(fig:unemp) shows the changes in the unemployment rate from 19990 to 2013. First, there is a long-run downward trend in the unemployment rate, which is consistent with the idea that Australia’s long term unemployment ratio is relatively low among other countries in the world. Second, there are two peaks in the graph. The first peak is around the early 1990s, at the time, Australia was experiencing a recession. The second peak is around 2008 due to the global financial crisis. 
+Figure\@ref(fig:unemp) shows the changes in the unemployment rate from 1990 to 2013. First, there is a long-run downward trend in the unemployment rate, which is consistent with the idea that Australia’s long term unemployment ratio is relatively low among other countries in the world. Second, there are two peaks in the graph. The first peak is around the early 1990s, at the time, Australia was experiencing a recession. The second peak is around 2008 due to the global financial crisis. 
 
 \subsection{Boxplot}
 
@@ -588,7 +588,7 @@ Figure \@ref(fig:cor) shows the sign of coefficients as we expected except for t
 ```{r model,fig.width=5, echo=FALSE, message=FALSE}
 m <- lm(Unemploy_T ~  GDP_growth + Population + Inflation, data = AUS1)
 d <- coef(summary(m))
-knitr::kable(d, booktabs = TRUE, caption = 'The estimated linear modelfor the unemployment rate')%>%
+knitr::kable(d, booktabs = TRUE, caption = 'The estimated linear model for the unemployment rate')%>%
   kable_styling(c("basic",
                   fixed_thead = TRUE),
                 latex_options = "HOLD_position")
@@ -606,7 +606,7 @@ AUS <- read_csv("Data/AUS.csv") %>%
 ```
 
 
-\subsection{The relationship between  different varaiables}
+\subsection{The relationship between  different variables}
 
 Because there are missing values in some years of some variables in the original data, which will affect the estimation of the regression model, it is necessary to interpolate the missing values. Here I use the mean to interpolate. At the same time, I deal with the variable `population` in millions of units.And I made some single liner regression in figure \@ref(fig:lin) to judge whether they have a connection. 
 

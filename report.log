@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.22)  3 JUN 2021 08:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.22)  3 JUN 2021 08:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1640,7 +1640,7 @@ Overfull \hbox (40.976pt too wide) in paragraph at lines 685--685
 
 [12 <./Figures/unnamed-chunk-7-1.pdf>] [13] (./report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 1196F7F563AA6B9E22C39A81A64A2818;3577.
+(rerunfilecheck)             Checksum: 234CFCB10BC27EB7B8AA5CC2347BD5BA;3572.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
@@ -1648,7 +1648,7 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 Here is how much of TeX's memory you used:
  26604 strings out of 478994
  437635 string characters out of 5858184
- 1190391 words of memory out of 5000000
+ 1191392 words of memory out of 5000000
  43293 multiletter control sequences out of 15000+600000
  512047 words of font info for 303 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1664,7 +1664,7 @@ e/2021/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2
 dist/fonts/type1/public/bera/fvsb8a.pfb></usr/local/texlive/2021/texmf-dist/fon
 ts/type1/public/bera/fvsr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
 /public/mathdesign/mdbch/md-chr8t.pfb>
-Output written on report.pdf (13 pages, 759342 bytes).
+Output written on report.pdf (13 pages, 759347 bytes).
 PDF statistics:
  293 PDF objects out of 1000 (max. 8388607)
  242 compressed objects within 3 object streams
