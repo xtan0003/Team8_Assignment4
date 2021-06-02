@@ -8,6 +8,4 @@ Welcome to our group assignment for ETC5513. The topic we have chosen is "explor
 This report is fully reproducible. Our repository comes with a reference file named 'reference. bib, a 'Figures' Folder and a 'Data' folder. All these files are necessary for reproducibility.
 
 ## Group members
--Peichen Zhao
--Xinyi Tang
--Hao Li
+Peichen Zhao, Xinyi Tang and Hao Li
