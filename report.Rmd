@@ -59,6 +59,7 @@ library(dplyr)
 ```
 
 
+
 ```{r ,echo=TRUE,include=FALSE}
 AUS <- read_csv(here::here("Data/AUS.csv")) %>% 
   dplyr::filter(year >= 1990 & year <= 2019) %>% 
@@ -179,5 +180,5 @@ Based on Figure \@ref(fig:cor), we model the factors that affect the employment 
 
 \section{Country XX3 and YY3}
 
-(@basiceducation)
-
+@basiceducation
+@advancededucation

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.22)  2 JUN 2021 08:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.22)  2 JUN 2021 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1469,11 +1469,7 @@ Overfull \hbox (41.61095pt too wide) in paragraph at lines 347--348
  [][] 
  []
 
-[4 <./Figures/gender-1.pdf>] [5 <./Figures/cor-1.pdf>]
-
-LaTeX Warning: Empty bibliography on input line 385.
-
-[6] (./report.aux)
+[4 <./Figures/gender-1.pdf>] [5 <./Figures/cor-1.pdf>] [6] (./report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 1D82996771BEBBBB012687CFC1E9D1BB;1474.
 Package logreq Info: Writing requests to 'report.run.xml'.
@@ -1481,13 +1477,13 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26089 strings out of 478994
- 428786 string characters out of 5858184
- 1174082 words of memory out of 5000000
- 42901 multiletter control sequences out of 15000+600000
- 503938 words of font info for 240 fonts, out of 8000000 for 9000
+ 26309 strings out of 478994
+ 433122 string characters out of 5858184
+ 1176250 words of memory out of 5000000
+ 43104 multiletter control sequences out of 15000+600000
+ 505044 words of font info for 252 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,14n,93p,1195b,808s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,14n,93p,1195b,1447s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}{/usr/lo
 cal/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/202
 1/texmf-dist/fonts/enc/dvips/fontawesome/fontawesometwo.enc}</usr/local/texlive
@@ -1498,10 +1494,10 @@ e/2021/texmf-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/local/texlive/2
 1/texmf-dist/fonts/type1/public/bera/fvsb8a.pfb></usr/local/texlive/2021/texmf-
 dist/fonts/type1/public/bera/fvsr8a.pfb></usr/local/texlive/2021/texmf-dist/fon
 ts/type1/public/mathdesign/mdbch/md-chr8t.pfb>
-Output written on report.pdf (6 pages, 691507 bytes).
+Output written on report.pdf (6 pages, 693798 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
+ 154 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
  77914 words of extra memory for PDF output out of 89155 (max. 10000000)
 
