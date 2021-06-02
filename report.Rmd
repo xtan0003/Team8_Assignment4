@@ -103,7 +103,7 @@ kable(Miss_AUS1, booktabs = TRUE,
 
 From the given table \@ref(tab:m1)There are significant proportion of missing values in variables unemployment with advanced education and basic education.That means the research concerning these two variables should begin at 2000 .
 
-```{r g1,fig.cap="GDP Change from 1990 to 2020",echo=FALSE,include=FALSE, message=FALSE}
+```{r g1,fig.cap="GDP Change from 1990 to 2020",echo=FALSE, message=FALSE}
 
 g1 <- AUS %>% 
   ggplot(aes(year,gdp_growth)) +
@@ -115,7 +115,7 @@ g1 <- AUS %>%
 
 From the given figure \@ref(fig:g1),only the beginning of 1990s has experienced a negative growth which was about -0.3%,and the following growth of years was fluctuating around 2.5% even after 2008 the year of financial crisis the growth is still positive.The negative growth in 1990s attribute to recession mainly resulted from Australia's efforts to address excess domestic demand,curb speculative behaviours in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation.
 
-```{r g2,fig.cap="Population Change from 1990 to 2020",echo=FALSE,include=FALSE,message=FALSE}
+```{r g2,fig.cap="Population Change from 1990 to 2020",echo=FALSE,message=FALSE}
 
 g2 <- AUS %>% 
   ggplot(aes(year,population)) +
@@ -129,7 +129,7 @@ g2 <- AUS %>%
 
 From the given figure \@ref(fig:g2), the Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.Australia has population growth rate around 1.48% averagely according to World Bank  data.Migration and birth rate minus mortality rate were included in this growth rate.
 
-```{r g3,fig.cap="Inflation Change from 1990 to 2020",echo=FALSE,include=FALSE,message=FALSE}
+```{r g3,fig.cap="Inflation Change from 1990 to 2020",echo=FALSE,include=TRUE,message=FALSE}
 g3 <- AUS1 %>%
   ggplot(aes(year,  `Inflation, consumer prices (annual %)`)) +
   geom_line() +
@@ -248,16 +248,6 @@ AUS_edu2%>%
 
 From the given table \@ref(tab:educhange),the unemployment rate of people with advanced education is much lower than people with basic education,which was changing at the rang between 4% to 2%.While the unemployment rate for people with basic education is about 10% to 8% throughout 13 years.
 
-```{r g9,echo=FALSE,include=TRUE,message=FALSE}
-
-g9 <- ggplot(AUS_edu_longer,aes(x=year,y=Percent,by=Unemployment,color = factor(Unemployment)))+
-  geom_line()+
-  labs(color = "Unemployment by education") 
-g9
-
-```
-
-The given figure \@ref(fig:g9) can demonstrate the change more obviously,the two lines are in completely different levels,that means the unemployment of basic education is much more higher than people with advanced education.However,they changes show similar pattern such as the downward trend from 1990 to 2006 and upward from 2007 to 2009.
 
 ```{r echo=FALSE,include=FALSE,message=FALSE}
 
@@ -390,9 +380,9 @@ AUS_sex_change_wider<-AUS_sex_wider%>%
            Unemploy_F,
          Unemploy_M_Change=
            Unemploy_M)%>%
-  mutate(year=as.numeric(year))
+  mutate(year=as.numeric(year)) 
 
-AUS_sex2<-left_join(AUS_sex_tab,AUS_sex_change_wider,by="year")
+AUS_sex2<-left_join(AUS_sex_tab,AUS_sex_change_wider,by="year") 
 
 AUS_sex2%>%
   kable(caption ="Percent change in umemployment by gender")%>%
