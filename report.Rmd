@@ -71,7 +71,9 @@ library(naniar)
 \subsection{Introduction}
 
 This report aims to analyze factors related to GDP growth from 1990 to 2019 in Australia.There are several parts we want to figure out by analyzing the data: overall changes in unemployment,population,GDP growth,unemployment with different education level,and unemployment by genders from 1990 to 2020.The comparison between different categories of unemployment.The factors related to the GDP growth and their relations.
-The report is based on the Data of the world bank.All data of ABS presented on this website is provided under a Creative Commons Attribution 4.0 International license, it is open data and free to share and adapt for any purpose even commercially.
+The report is based on the Data of the world bank.The population date provided at @Population,and variables of unemployment rate for people with different level of education are extracted from @basiceducation and @advancededucation.Similarly unemployment rate of genders can be found at @femaleunemployment and @maleunemploymen.In terms of economic variables GDP and inflation,@GDP and @inflation are the sources of these mentioned variables.The data about total unemployment rate is from @totalunemployment.All data of ABS presented on this website is provided under a Creative Commons Attribution 4.0 International license, it is open data and free to share and adapt for any purpose even commercially.
+
+
 
 \subsection{Missing value in original data}
 
@@ -446,7 +448,7 @@ AUS_A_P%>%
 
 ```
 
-```{r A1,echo=FALSE,include=TRUE,fig.cap="Population age proportion"}
+```{r A1,echo=FALSE,include=TRUE,fig.cap="Population age proportion",fig.height =4, fig.width = 5}
 
 AUS_A_change_wider%>%
   select(-`International migrants (% of population)`)%>%
@@ -467,7 +469,7 @@ AUS_A_change_wider%>%
 
 ```
 
-```{r}
+```{r lm1,message=FALSE,include=TRUE,echo=FALSE,fig.height =4, fig.width = 5}
 Pop_lm<-left_join(AUS_A_change_wider,AUS,by="year")%>%
   mutate(across(everything(),na_mean))%>%
   select(gdp_growth,
@@ -493,6 +495,7 @@ Pop_model %>%
   tidy() %>% 
   mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>% 
   regulartable()
+
 ```
 
 \section{Exploring Unemployment Rate}
