@@ -1,21 +1,20 @@
 ---
-title: "Team8_Report"
+title: "ETC5513_Assignment4"
 author:
 - familyname: Chen
   othernames: Peizhao
   address: Monash Universtidy
   email: pche0072@student.monash.edu
-  correspondingauthor: true
   qualifications:  XXX
-- familyname: XXXX
-  othernames: Reports
+- familyname: Tang
+  othernames: Xinyi
   address: XXX
+  email: XXX
   qualifications: XXX
 - familyname: XXX
   othernames: XXX
   address: XXX
   email: XXX
-  correspondingauthor: true
   qualifications:  XXX
 department: Our consultancy \newline add names &\newline add names
 organization: Australian Government COVID19
@@ -42,6 +41,9 @@ knitr::opts_chunk$set(echo=FALSE,
                       include=TRUE, 
                       messages = FALSE, 
                       warning = FALSE)
+
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center", fig.path = "Figures/")
+knitr::opts_chunk$set(fig.pos ="H", out.extra="")
 
 library(palmerpenguins)
 library(tidyverse)
@@ -71,8 +73,7 @@ library(naniar)
 This report aims to analyze factors related to GDP growth from 1990 to 2019 in Australia.There are several parts we want to figure out by analyzing the data: overall changes in unemployment,population,GDP growth,unemployment with different education level,and unemployment by genders from 1990 to 2020.The comparison between different categories of unemployment.The factors related to the GDP growth and their relations.
 The report is based on the Data of the world bank.All data of ABS presented on this website is provided under a Creative Commons Attribution 4.0 International license, it is open data and free to share and adapt for any purpose even commercially.
 
-
-```{r  echo=FALSE,include=FALSE}
+```{r ,echo=TRUE,include=FALSE}
 
 AUS <- read_csv(here::here("Data/AUS.csv")) %>% 
   dplyr::filter(year >= 1990 & year <= 2019) %>% 
@@ -84,7 +85,8 @@ AUS1 <- read_excel(here::here("Data/A4_data.xlsx")) %>%
          "Unemploy_M"=`Unemployment male`,
          "Unemploy_T"=`Unemployment total`,
          "Advanced_edu"=`advanced education`,
-         "Basic_edu"=`basic education`)
+         "Basic_edu"=`basic education`,
+         "Inflation" = `Inflation, consumer prices (annual %)`)
 ```
 
 ```{r m1,echo=FALSE,include=TRUE}
@@ -101,7 +103,8 @@ kable(Miss_AUS1, booktabs = TRUE,
 
 From the given table \@ref(tab:m1)There are significant proportion of missing values in variables unemployment with advanced education and basic education.That means the research concerning these two variables should begin at 2000 .
 
-```{r g1,fig.cap="GDP Change from 1990 to 2020" }
+```{r g1,fig.cap="GDP Change from 1990 to 2020",echo=FALSE,include=FALSE}
+
 g1 <- AUS %>% 
   ggplot(aes(year,gdp_growth)) +
   geom_line()+
@@ -112,7 +115,8 @@ g1 <- AUS %>%
 
 From the given figure \@ref(fig:g1),only the beginning of 1990s has experienced a negative growth which was about -0.3%,and the following growth of years was fluctuating around 2.5% even after 2008 the year of financial crisis the growth is still positive.The negative growth in 1990s attribute to recession mainly resulted from Australia's efforts to address excess domestic demand,.curb speculative behaviour in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation.
 
-```{r g2,fig.cap="Population Change from 1990 to 2020"}
+```{r g2,fig.cap="Population Change from 1990 to 2020",echo=FALSE,include=FALSE}
+
 g2 <- AUS %>% 
   ggplot(aes(year,population)) +
   geom_line()+
@@ -125,7 +129,7 @@ g2 <- AUS %>%
 
 From the given figure \@ref(fig:g2), the Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.Australia has population growth rate around 1.48% averagely according to worldbank data.Migration and birth rate minus mortality rate were included in this growth rate.
 
-```{r g3,fig.cap="Inflation Change from 1990 to 2020"}
+```{r g3,fig.cap="Inflation Change from 1990 to 2020",echo=FALSE,include=FALSE}
 g3 <- AUS1 %>%
   ggplot(aes(year,  `Inflation, consumer prices (annual %)`)) +
   geom_line() +
@@ -538,10 +542,103 @@ AUS_T2%>%
 
 From the given table \@ref(tab:Tchange),the total unemployment rate of Australia showed a generally downward tendency from 1990 to 2013 since in the beginning of 1990 the rate was about 10% but after 13 years the unemployment rate has decreased to 5.66% in 2013.
 
+\section{Exploring Unemployment Rate}
 
-\section*{Country XX2 and YY2}
+\subsection{Unemployment rate plot}
 
-\section*{Country XX3 and YY3}
+```{r unemp, fig.cap = "Unemployment rate from 1990 to 2013", warning = FALSE,fig.height =4, fig.width = 5,,echo=FALSE}
+g4 <- AUS1 %>%
+  ggplot(aes(year, Unemploy_T)) +
+  geom_line() +
+  labs(x = "Year",
+       y = "unemployment rate")
+g4
+```
+
+Figure\@ref(fig:unemp) shows the changes in the unemployment rate from 19990 to 2013. First, there is a long-run downward trend in the unemployment rate, which is consistent with the idea that Australia’s long term unemployment ratio is relatively low amongst other countries in the world. Second, there are two peaks in the graph. The first peak is around the early 1990s, at the time, Australia was experiencing a recession. The second peak is around 2008 due to the global financial crisis. 
+
+\subsection{Boxplot}
+
+```{r boxplot, fig.cap="Box plot of the unemployment rate",fig.height =4, fig.width = 5,echo=FALSE,warning=FALSE}
+
+boxplot <- AUS1 %>%
+  select(Unemploy_T,
+         Unemploy_F ,
+         Unemploy_M,
+         Advanced_edu,
+         Basic_edu) %>%
+  gather(key = "variable", value = "value") %>%
+  ggplot() +
+  geom_boxplot(aes(x = variable, y = value))
+boxplot
+
+```
+
+Figure \@ref(fig:boxplot) shows the mean value of advanced education is higher than the mean of the basic education in the boxplot. It means that people with advanced education has a lower unemployment rate than people with basic education.
+
+We also notice that the average male unemployment rate is slightly higher than the female unemployment rate. To see this in details, we are going to plot the unemployment rate by genders.
+
+\subsection{Unemployment rate by genders}
 
 
+```{r gender, fig.cap="Unemployment rate by genders",fig.height =4, fig.width = 7,,echo=FALSE}
+AUS_sex<-AUS1%>%
+  select(year,
+         Unemploy_F,
+         Unemploy_M)%>%
+  filter(year%in%c("1979":"2019"))%>%
+  pivot_longer(cols = -c('year'),
+               names_to = "Unemployment",      
+               values_to = "Percent")
 
+g6 <- ggplot(AUS_sex,aes(x=year,y=Percent,by=Unemployment,color = factor(Unemployment)))+
+  geom_line()+
+  labs(color = "Unemployment by Genders") 
+g6
+```
+
+Figure \@ref(fig:gender) shows that female unemployment rates have been consistently below male rates, despite there are some pick-ups in unemployment rates for females over the past few years.
+
+\subsection{Correlation}
+
+
+```{r step4,echo=FALSE,include=FALSE}
+
+correlation <- AUS1 %>%
+  select(GDP_growth,
+         Population,
+         Inflation,
+         Unemploy_T) %>% 
+  cor() %>% round(2)
+correlation
+
+```
+
+
+```{r cor, fig.cap="Correlation Graph",echo=FALSE,fig.height =7, fig.width = 7, fig.align='center'}
+corrplot::corrplot(correlation)
+```
+
+We expected the unemployment rate has a negative association with GDP. The low unemployment rate would lead to an increase in GDP. Based on the Phillips curve, inflation and the unemployment rate have maintained an inverse relationship historically. Therefore, we expected to see an inverse relationship between inflation and the unemployment rate. Besides, low population growth may lead to a low unemployment rate. 
+
+Figure \@ref(fig:cor) shows the sign of coefficients as we expected except for the variable population. One possible reason is that the correlation graph could be wrong as it is just an estimation. 
+
+
+\subsection{Linear model for the unemployment rate}
+
+
+```{r model,fig.width=5, echo=FALSE}
+m <- lm(Unemploy_T ~  GDP_growth + Population + Inflation, data = AUS1)
+d <- coef(summary(m))
+knitr::kable(d, booktabs = TRUE, caption = 'The estimated linear modelfor the unemployment rate')%>%
+  kable_styling(c("basic",
+                  fixed_thead = TRUE),
+                latex_options = "HOLD_position")
+```
+
+Based on Figure \@ref(fig:cor), we model the factors that affect the employment rate. Table \@ref(tab:model) shows that all the coefficients are significant under the 10% level of significance. Finally, The value of R squared is equal to 79.95%. Therefore, the 79.95% of the variance for the unemployment rate can be explained by GDP_growth, Population and Inflation. 
+
+\section{Country XX3 and YY3}
+
+@basiceducation
+@advancededucation
