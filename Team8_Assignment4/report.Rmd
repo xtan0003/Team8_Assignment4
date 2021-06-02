@@ -17,8 +17,8 @@ author:
   email: hlii0151@student.monash.edu
   correspondingauthor: true
   qualifications:  XXX
-department: Our consultancy \newline add names &\newline add names
-organization: Australian Government COVID19
+department: Economics and business 
+organization: ETC5513
 bibliography: references.bib
 biblio-style: authoryear-comp
 linestretch: 1.5
@@ -60,12 +60,11 @@ AUS <- read_csv("Data/AUS.csv") %>%
 
 \section*{Country XX2 and YY2}
 
-\section
-## Q3 The influence of different factors on GDP.
+Q3 The influence of different factors on GDP.
 
-* Because there are missing values in some years of some variables in the original data, which will affect the estimation of the regression model, it is necessary to interpolate the missing values. Here I use the mean to interpolate. At the same time, I deal with the variable `population` in millions of units.
+Because there are missing values in some years of some variables in the original data, which will affect the estimation of the regression model, it is necessary to interpolate the missing values. Here I use the mean to interpolate. At the same time, I deal with the variable `population` in millions of units.And I made some single liner regression in figure \@ref(fig:lin) to judge whether they have a connection. 
 
-```{r}
+```{r lin, fig.cap= "liner model"}
 AUS_lm <- AUS %>% 
   mutate(across(everything(),na_mean)) %>% 
   dplyr::select(-year) %>% 
@@ -83,7 +82,7 @@ AUS_lm %>%
 
 
 
-```{r}
+```{r fig.cap= "multi"}
 lm_model <- lm(gdp_growth ~ .,data = AUS_lm)
 lm_model %>% 
   tidy() %>% 
@@ -91,9 +90,9 @@ lm_model %>%
   regulartable()
 ```
 
-It can be found that most variables are not significant when using the whole model for regression. I think this is due to the existence of multicollinearity in the data. Let's judge whether there is serious multicollinearity.
+It can be found that in table most variables are not significant when using the whole model for regression. I think this is due to the existence of multicollinearity in the data. Let's judge whether there is serious multicollinearity.
 
-```{r}
+```{r inf, fig.cap= "inflation"}
 lm_model %>%
   car::vif() %>%
   as.data.frame() %>% 
@@ -102,9 +101,9 @@ lm_model %>%
   regulartable()
 ```
 
-By calculating the variance expansion factor, we can find that the model has serious multicollinearity, so we need to delete the variables.
+By calculating the variance expansion factor in table  we can find that the model has serious multicollinearity, so we need to delete the variables.
 
-```{r}
+```{r fig.cap="residuals"}
 lm_steped <- step(lm_model,trace = 0)
 gglm(lm_steped)
 lm_steped %>% 
@@ -114,7 +113,4 @@ lm_steped %>%
 ```
 
 The regression model with stepwise regression method excluding highly correlated variables shows that variables `population`,`unemployment_with_basic_education`,`unemployment_male` have a significant impact on GDP growth at the significance level of 10%. To be specific, every 1 million increase in `population` will reduce GDP by 0.0229%. This may be because the Australian government is unable to provide sufficient employment opportunities and the demographic dividend has not been fully released. From the perspective of variable `unemployment_with_basic_education`, every 1% increase in the employment rate of people with basic education will increase the GDP growth by 0.38% on average. This main reason may be the industrial structure in Australia is undergoing adjustment, and some industries are eliminating people with only basic education to reduce the labor cost. Finally, every 1% increase in male unemployment rate will reduce GDP growth by an average of 0.34%, which shows that male workers still dominate all walks of life in Australia.
-
-
-Conclusion:
 Through the above model analysis of variables. We can know that  the variables "population", "unemployment rate of basic education" and "unemployment rate of men" have a certain impact on Australia's GDP.
