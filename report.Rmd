@@ -582,7 +582,7 @@ correlation
 ```
 
 
-```{r cor, fig.cap="Correlation Graph",echo=FALSE,fig.height =7, fig.width = 7, fig.align='center',message=FALSE}
+```{r cor, fig.cap="Correlation Graph",echo=FALSE,fig.height =5, fig.width = 5, fig.align='center',message=FALSE}
 corrplot::corrplot(correlation)
 ```
 
