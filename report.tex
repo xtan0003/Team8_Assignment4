@@ -312,9 +312,9 @@ The report is based on the Data of the world bank.The population date provided a
 \caption{\label{tab:m1}Missing values in data}
 \centering
 \begin{tabular}[t]{lrr}
-\toprule{}
+\toprule
 variable & n\_miss & pct\_miss\\
-\midrule{}
+\midrule
 Advanced\_edu & 7 & 29.16667\\
 Basic\_edu & 7 & 29.16667\\
 year & 0 & 0.00000\\
@@ -325,7 +325,7 @@ Unemploy\_F & 0 & 0.00000\\
 Unemploy\_M & 0 & 0.00000\\
 Inflation & 0 & 0.00000\\
 Unemploy\_T & 0 & 0.00000\\
-\bottomrule{}
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -443,7 +443,14 @@ year & 0\_14 & 15\_64 & 65\_over & International migrants (\% of population)\\
 
 Looking at the age distribution of Australian , the figure \ref{fig:A1} and table \ref{tab:Achange} shows the Australia's population is aging gradually. The percentage of people over the age of 65 has risen from 11.058\% in 1990 to 15.921\% in 2018. On the contrary, the proportion of children is gradually decreasing, from 22.089\% in 1990 to 2018. 19.275\% of the year. There is also a slight downward trend for young adults aged 15 to 65, but more importantly, the proportion of international immigrants in Australia's population has increased significantly, from 23.13\% to 28.24\% in the same period.This explains why the birth rate is decreasing year by year and the population is getting old, the total population of Australia is increasing year by year, because a large number of international immigrants fill up the labor force and promote economic development to a certain extent.
 
-\begin{center}\includegraphics{Figures/lm1-1} \end{center}
+\begin{figure}[H]
+
+{\centering \includegraphics{Figures/lm1-1} 
+
+}
+
+\caption{Linear Model}\label{fig:lm1}
+\end{figure}
 
 \providecommand{\docline}[3]{\noalign{\global\setlength{\arrayrulewidth}{#1}}\arrayrulecolor[HTML]{#2}\cline{#3}}
 
@@ -564,14 +571,14 @@ Figure \ref{fig:cor} shows the sign of coefficients as we expected except for th
 \caption{\label{tab:model}The estimated linear model for the unemployment rate}
 \centering
 \begin{tabular}[t]{lrrrr}
-\toprule{}
+\toprule
   & Estimate & Std. Error & t value & Pr(>|t|)\\
-\midrule{}
+\midrule
 (Intercept) & 27.1939625 & 2.3091897 & 11.776409 & 0.0000000\\
 GDP\_growth & -0.3001259 & 0.1556400 & -1.928334 & 0.0681313\\
 Population & -0.0000009 & 0.0000001 & -8.371780 & 0.0000001\\
 Inflation & -0.4371258 & 0.1294037 & -3.378000 & 0.0029892\\
-\bottomrule{}
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -783,4 +790,3 @@ Through the above model analysis of variables. We can know that the variables ``
 \printbibliography
 
 \end{document}
-
