@@ -1,4 +1,3 @@
-
 ---
 title: "ETC5513_Assignment4"
 author:
@@ -473,7 +472,7 @@ AUS_A_change_wider%>%
 
 Looking at the age distribution of Australian , the figure \@ref(fig:A1) and table \@ref(tab:Achange) shows the Australia’s population is aging gradually. The percentage of people over the age of 65 has risen from 11.058% in 1990 to 15.921% in 2018. On the contrary, the proportion of children is gradually decreasing, from 22.089% in 1990 to 2018. 19.275% of the year. There is also a slight downward trend for young adults aged 15 to 65, but more importantly, the proportion of international immigrants in Australia’s population has increased significantly, from 23.13% to 28.24% in the same period.This explains why the birth rate is decreasing year by year and the population is getting old, the total population of Australia is increasing year by year, because a large number of international immigrants fill up the labor force and promote economic development to a certain extent.
 
-```{r lm1,fig.cap="Linear Model",message=FALSE,include=TRUE,echo=FALSE,fig.height =4, fig.width = 5}
+```{r lm1,message=FALSE,include=TRUE,echo=FALSE,fig.height =4, fig.width = 5}
 Pop_lm<-left_join(AUS_A_change_wider,AUS,by="year")%>%
   select(gdp_growth,
          `0_14`,
@@ -643,7 +642,7 @@ lm_model <- lm(gdp_growth ~ .,data = AUS_lm)
 lm_model %>% 
   tidy() %>% 
   mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>% 
-  regulartable()
+  regulartable(cwidth=1.5)
 
 ```
 
@@ -656,7 +655,7 @@ lm_model %>%
   as.data.frame() %>% 
   setNames("Variance Inflation Factors") %>% 
   rownames_to_column("Variables") %>% 
-  regulartable()
+  regulartable(cwidth=2)
 ```
 
 By calculating the variance expansion factor in table  we can find that the model has serious multicollinearity, so we need to delete the variables.
@@ -668,7 +667,7 @@ gglm(lm_steped)
 lm_steped %>% 
   tidy() %>% 
   mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>%
-  regulartable()
+  regulartable(cwidth=1.5)
 ```
 
 The regression model with stepwise regression method excluding highly correlated variables shows that variables `population`,`unemployment_with_basic_education`,`unemployment_male` have a significant impact on GDP growth at the significance level of 10%. To be specific, every 1 million increase in `population` will reduce GDP by 0.0229%. This may be because the Australian government is unable to provide sufficient employment opportunities and the demographic dividend has not been fully released. From the perspective of variable `unemployment_with_basic_education`, every 1% increase in the employment rate of people with basic education will increase the GDP growth by 0.38% on average. This main reason may be the industrial structure in Australia is undergoing adjustment, and some industries are eliminating people with only basic education to reduce the labor cost. Finally, every 1% increase in male unemployment rate will reduce GDP growth by an average of 0.34%, which shows that male workers still dominate all walks of life in Australia.
