@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.2)  3 JUN 2021 11:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.2)  3 JUN 2021 11:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1805,116 +1805,110 @@ Package pdftex.def Info: Figures/A1-1.pdf  used on input line 437.
 <Figures/lm1-1.pdf, id=132, 361.35pt x 289.08pt>
 File: Figures/lm1-1.pdf Graphic file (type pdf)
 <use Figures/lm1-1.pdf>
-Package pdftex.def Info: Figures/lm1-1.pdf  used on input line 446.
+Package pdftex.def Info: Figures/lm1-1.pdf  used on input line 448.
 (pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
 [6 <./Figures/A1-1.pdf>]
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 10.56007pt on input line 460.
-
-LaTeX Warning: Reference `fig:lm1' on page 7 undefined on input line 498.
-
+(Font)              scaled to size 10.56007pt on input line 467.
 [7 <./Figures/lm1-1.pdf>]
-<Figures/unemp-1.pdf, id=159, 361.35pt x 289.08pt>
+<Figures/unemp-1.pdf, id=161, 361.35pt x 289.08pt>
 File: Figures/unemp-1.pdf Graphic file (type pdf)
 <use Figures/unemp-1.pdf>
-Package pdftex.def Info: Figures/unemp-1.pdf  used on input line 506.
+Package pdftex.def Info: Figures/unemp-1.pdf  used on input line 513.
 (pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
-<Figures/boxplot-1.pdf, id=161, 361.35pt x 289.08pt>
+<Figures/boxplot-1.pdf, id=163, 361.35pt x 289.08pt>
 File: Figures/boxplot-1.pdf Graphic file (type pdf)
 <use Figures/boxplot-1.pdf>
-Package pdftex.def Info: Figures/boxplot-1.pdf  used on input line 519.
+Package pdftex.def Info: Figures/boxplot-1.pdf  used on input line 526.
 (pdftex.def)             Requested size: 361.34912pt x 289.07928pt.
 [8 <./Figures/unemp-1.pdf>]
-<Figures/gender-1.pdf, id=173, 505.89pt x 289.08pt>
+<Figures/gender-1.pdf, id=175, 505.89pt x 289.08pt>
 File: Figures/gender-1.pdf Graphic file (type pdf)
 <use Figures/gender-1.pdf>
-Package pdftex.def Info: Figures/gender-1.pdf  used on input line 534.
+Package pdftex.def Info: Figures/gender-1.pdf  used on input line 541.
 (pdftex.def)             Requested size: 505.88875pt x 289.07928pt.
 
-Overfull \hbox (50.64467pt too wide) in paragraph at lines 534--535
+Overfull \hbox (50.64467pt too wide) in paragraph at lines 541--542
  [][] 
  []
 
 [9 <./Figures/boxplot-1.pdf>]
-<Figures/cor-1.pdf, id=185, 505.89pt x 505.89pt>
+<Figures/cor-1.pdf, id=187, 505.89pt x 505.89pt>
 File: Figures/cor-1.pdf Graphic file (type pdf)
 <use Figures/cor-1.pdf>
-Package pdftex.def Info: Figures/cor-1.pdf  used on input line 549.
+Package pdftex.def Info: Figures/cor-1.pdf  used on input line 556.
 (pdftex.def)             Requested size: 505.88875pt x 505.88875pt.
 
-Overfull \hbox (50.64467pt too wide) in paragraph at lines 549--550
+Overfull \hbox (50.64467pt too wide) in paragraph at lines 556--557
  [][] 
  []
 
 [10 <./Figures/gender-1.pdf>] [11 <./Figures/cor-1.pdf>]
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.24173pt on input line 584.
-<Figures/lin-1.pdf, id=210, 433.62pt x 361.35pt>
+(Font)              scaled to size 9.24173pt on input line 591.
+<Figures/lin-1.pdf, id=212, 433.62pt x 361.35pt>
 File: Figures/lin-1.pdf Graphic file (type pdf)
 <use Figures/lin-1.pdf>
-Package pdftex.def Info: Figures/lin-1.pdf  used on input line 588.
+Package pdftex.def Info: Figures/lin-1.pdf  used on input line 595.
 (pdftex.def)             Requested size: 433.61894pt x 361.34912pt.
 [12]
-Overfull \hbox (136.88916pt too wide) in paragraph at lines 635--635
+Overfull \hbox (136.88916pt too wide) in paragraph at lines 642--642
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_advanced_education[]|  
  []
 
 
-Overfull \hbox (116.49156pt too wide) in paragraph at lines 641--641
+Overfull \hbox (116.49156pt too wide) in paragraph at lines 648--648
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_basic_education[]|  
  []
 
 
-Overfull \hbox (49.37927pt too wide) in paragraph at lines 647--647
+Overfull \hbox (49.37927pt too wide) in paragraph at lines 654--654
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_female[]|  
  []
 
 
-Overfull \hbox (40.976pt too wide) in paragraph at lines 653--653
+Overfull \hbox (40.976pt too wide) in paragraph at lines 660--660
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_male[]|  
  []
 
 
-Overfull \hbox (136.88916pt too wide) in paragraph at lines 695--695
+Overfull \hbox (136.88916pt too wide) in paragraph at lines 702--702
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_advanced_education[]|  
  []
 
 
-Overfull \hbox (116.49156pt too wide) in paragraph at lines 701--701
+Overfull \hbox (116.49156pt too wide) in paragraph at lines 708--708
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_basic_education[]|  
  []
 
 
-Overfull \hbox (49.37927pt too wide) in paragraph at lines 707--707
+Overfull \hbox (49.37927pt too wide) in paragraph at lines 714--714
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_female[]|  
  []
 
 
-Overfull \hbox (40.976pt too wide) in paragraph at lines 713--713
+Overfull \hbox (40.976pt too wide) in paragraph at lines 720--720
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_male[]|  
  []
 
 [13 <./Figures/lin-1.pdf>]
-<Figures/unnamed-chunk-7-1.pdf, id=233, 433.62pt x 361.35pt>
+<Figures/unnamed-chunk-7-1.pdf, id=235, 433.62pt x 361.35pt>
 File: Figures/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use Figures/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: Figures/unnamed-chunk-7-1.pdf  used on input line 724.
+Package pdftex.def Info: Figures/unnamed-chunk-7-1.pdf  used on input line 731.
 
 (pdftex.def)             Requested size: 433.61894pt x 361.34912pt.
 [14]
-Overfull \hbox (116.49156pt too wide) in paragraph at lines 768--768
+Overfull \hbox (116.49156pt too wide) in paragraph at lines 775--775
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_with_basic_education[]|  
  []
 
 
-Overfull \hbox (40.976pt too wide) in paragraph at lines 774--774
+Overfull \hbox (40.976pt too wide) in paragraph at lines 781--781
 []|[]\T1/mdbch/m/n/11 (-20) unemployment_male[]|  
  []
 
 [15 <./Figures/unnamed-chunk-7-1.pdf>] [16] (./report.aux)
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 234CFCB10BC27EB7B8AA5CC2347BD5BA;3572.
 Package logreq Info: Writing requests to 'report.run.xml'.
@@ -1922,9 +1916,9 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26610 strings out of 480517
- 447891 string characters out of 5897919
- 1196765 words of memory out of 5000000
+ 26611 strings out of 480517
+ 447908 string characters out of 5897919
+ 1196810 words of memory out of 5000000
  43462 multiletter control sequences out of 15000+600000
  513692 words of font info for 324 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -1943,10 +1937,10 @@ sers/Administrator/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/bera/f
 vsb8a.pfb><c:/Users/Administrator/AppData/Roaming/TinyTeX/texmf-dist/fonts/type
 1/public/bera/fvsr8a.pfb><c:/Users/Administrator/AppData/Roaming/TinyTeX/texmf-
 dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb>
-Output written on report.pdf (16 pages, 785579 bytes).
+Output written on report.pdf (16 pages, 785780 bytes).
 PDF statistics:
- 321 PDF objects out of 1000 (max. 8388607)
- 263 compressed objects within 3 object streams
- 56 named destinations out of 1000 (max. 500000)
+ 323 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
+ 57 named destinations out of 1000 (max. 500000)
  84152 words of extra memory for PDF output out of 89155 (max. 10000000)
 

@@ -473,7 +473,7 @@ AUS_A_change_wider%>%
 
 Looking at the age distribution of Australian , the figure \@ref(fig:A1) and table \@ref(tab:Achange) shows the Australia’s population is aging gradually. The percentage of people over the age of 65 has risen from 11.058% in 1990 to 15.921% in 2018. On the contrary, the proportion of children is gradually decreasing, from 22.089% in 1990 to 2018. 19.275% of the year. There is also a slight downward trend for young adults aged 15 to 65, but more importantly, the proportion of international immigrants in Australia’s population has increased significantly, from 23.13% to 28.24% in the same period.This explains why the birth rate is decreasing year by year and the population is getting old, the total population of Australia is increasing year by year, because a large number of international immigrants fill up the labor force and promote economic development to a certain extent.
 
-```{r lm1,message=FALSE,include=TRUE,echo=FALSE,fig.height =4, fig.width = 5}
+```{r lm1,fig.cap="Linear Model",message=FALSE,include=TRUE,echo=FALSE,fig.height =4, fig.width = 5}
 Pop_lm<-left_join(AUS_A_change_wider,AUS,by="year")%>%
   select(gdp_growth,
          `0_14`,
