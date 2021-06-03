@@ -262,7 +262,7 @@ AUS_P2%>%
 ```
 
 
-From the given figure \@ref(fig:g1),only the beginning of 1990s has experienced a negative growth which was about -0.3%,and the following growth of years was fluctuating around 2.5% even after 2008 the year of financial crisis the growth is still positive.The negative growth in 1990s attribute to recession mainly resulted from Australia's efforts to address excess domestic demand,curb speculative behaviours in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation.
+From the given figure \@ref(fig:g1) and table \@ref(tab:Ichange),only the beginning of 1990s has experienced a negative growth which was about -0.3%,and the following growth of years was fluctuating around 2.5% even after 2008 the year of financial crisis the growth is still positive.The negative growth in 1990s attribute to recession mainly resulted from Australia's efforts to address excess domestic demand,curb speculative behaviours in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation.At the same time, countries in other parts of the world, in particular the United States, also entered recession, compounding the effect of tighter monetary policy in Australia. (The unemployment rate peaked at just over 11 per cent.)
 
 ```{r g2,fig.cap="Population Change from 1990 to 2020",fig.height =4, fig.width = 5}
 
@@ -413,7 +413,7 @@ AUS_P2%>%
 
 ```
 
-From the given figure \@ref(fig:g2), the Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.Australia has population growth rate around 1.48% averagely according to World Bank  data.Migration and birth rate minus mortality rate were included in this growth rate.
+From the given figure \@ref(fig:g2) and table \@ref(tab:Tchange), the Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.Australia has population growth rate around 1.48% averagely according to World Bank  data.Migration and birth rate minus mortality rate were included in this growth rate.However,the population growth rate has experienced a downward trend from 2006 to 2007,which has dropped from 1.49% to 0.63% making the line no as smooth as previous years.The reason why the increase has weakened is because Australia government had tightened the policy for international migration at that particular time.
 
 \subsection{Further analysis between GDP and population}
 
@@ -426,9 +426,9 @@ AUS_A_change_wider<-AUS3%>%
   pivot_wider(id_cols = year,
               names_from = `Series Name`,
               values_from = Percentage)%>%
-  rename(`0-14`=`Population aged 0-14 (% of total population)`,
-         `15-64` = `Population aged 15-64 (% of total population)`,
-         `65 over`= `Population 65 years and older (% of total population)`)%>%
+  rename(`0_14`=`Population aged 0-14 (% of total population)`,
+         `15_64` = `Population aged 15-64 (% of total population)`,
+         `65_over`= `Population 65 years and older (% of total population)`)%>%
   mutate(year=as.numeric(year))
 
 AUS_A_P<- AUS_A_change_wider%>%
@@ -470,17 +470,24 @@ AUS_A_change_wider%>%
 
 ```
 
+
+Looking at the age distribution of Australian , the figure \@ref(fig:A1) and table \@ref(tab:Achange) shows the Australia’s population is aging gradually. The percentage of people over the age of 65 has risen from 11.058% in 1990 to 15.921% in 2018. On the contrary, the proportion of children is gradually decreasing, from 22.089% in 1990 to 2018. 19.275% of the year. There is also a slight downward trend for young adults aged 15 to 65, but more importantly, the proportion of international immigrants in Australia’s population has increased significantly, from 23.13% to 28.24% in the same period.This explains why the birth rate is decreasing year by year and the population is getting old, the total population of Australia is increasing year by year, because a large number of international immigrants fill up the labor force and promote economic development to a certain extent.
+
 ```{r lm1,message=FALSE,include=TRUE,echo=FALSE,fig.height =4, fig.width = 5}
 Pop_lm<-left_join(AUS_A_change_wider,AUS,by="year")%>%
-  mutate(across(everything(),na_mean))%>%
   select(gdp_growth,
-         `0-14`,
-         `15-64`,
-         `65 over`)
+         `0_14`,
+         `15_64`,
+         `65_over`)%>%
+  mutate(across(everything(),na_mean))
 
 Pop_lm %>% 
-  pivot_longer(-gdp_growth,names_to = "vars",values_to = "value") %>% 
-  ggplot(aes(value,gdp_growth,color = vars)) +
+  pivot_longer(-gdp_growth,
+               names_to = "vars",
+               values_to = "value") %>% 
+  ggplot(aes(value,
+             gdp_growth,
+             color = vars)) +
   geom_point() +
   facet_wrap(~ vars,scales = "free")+
   geom_smooth(method = lm) +
@@ -490,7 +497,7 @@ Pop_lm %>%
 
 ```
 
-```{r fig.cap="model"}
+```{r }
 Pop_model <- lm(gdp_growth ~ .,data = Pop_lm)
 Pop_model %>% 
   tidy() %>% 
@@ -498,6 +505,9 @@ Pop_model %>%
   regulartable()
 
 ```
+
+The figure \@ref(fig:lm1) shows single liner regression to judge whether they have a connection. The increase in the percentage of the elderly population has a negative impact on GDP. This may be because the Australian government’s annual financial burden will be heavier due to the pension and living security of the elderly, and the elderly cannot work like the young to drive economic development. The increase in the proportion of children and young adults can significantly promote economic development. From a global perspective, young adults have always been the main force in economic construction. At the same time, a series of activities such as education and medical care brought about by raising children can also stimulate consumption and promote economic development. This is no exception in Australia.
+
 
 \section{Exploring Unemployment Rate}
 
@@ -634,6 +644,7 @@ lm_model %>%
   tidy() %>% 
   mutate(across(where(is.numeric),.fns = function(x) round(x,4))) %>% 
   regulartable()
+
 ```
 
 \subsection{Variance Inflation Factors}
