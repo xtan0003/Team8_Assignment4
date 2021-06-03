@@ -312,9 +312,9 @@ The report is based on the Data of the world bank.The population date provided a
 \caption{\label{tab:m1}Missing values in data}
 \centering
 \begin{tabular}[t]{lrr}
-\toprule{}
+\toprule
 variable & n\_miss & pct\_miss\\
-\midrule{}
+\midrule
 Advanced\_edu & 7 & 29.16667\\
 Basic\_edu & 7 & 29.16667\\
 year & 0 & 0.00000\\
@@ -325,7 +325,7 @@ Unemploy\_F & 0 & 0.00000\\
 Unemploy\_M & 0 & 0.00000\\
 Inflation & 0 & 0.00000\\
 Unemploy\_T & 0 & 0.00000\\
-\bottomrule{}
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -367,7 +367,7 @@ year & GDP\_growth & GDP\_growth\_Change\\
 \end{tabular}
 \end{table}
 
-From the given figure \ref{fig:g1},only the beginning of 1990s has experienced a negative growth which was about -0.3\%,and the following growth of years was fluctuating around 2.5\% even after 2008 the year of financial crisis the growth is still positive.The negative growth in 1990s attribute to recession mainly resulted from Australia's efforts to address excess domestic demand,curb speculative behaviours in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation.
+From the given figure \ref{fig:g1} and table \ref{tab:Ichange},only the beginning of 1990s has experienced a negative growth which was about -0.3\%,and the following growth of years was fluctuating around 2.5\% even after 2008 the year of financial crisis the growth is still positive.The negative growth in 1990s attribute to recession mainly resulted from Australia's efforts to address excess domestic demand,curb speculative behaviours in commercial property markets and reduce inflation. Interest rates were increased to a very high level because the transmission of tighter monetary policy took longer than expected to put downward pressure on demand and inflation.At the same time, countries in other parts of the world, in particular the United States, also entered recession, compounding the effect of tighter monetary policy in Australia. (The unemployment rate peaked at just over 11 per cent.)
 
 \begin{figure}[H]
 
@@ -405,9 +405,97 @@ year & Population & Population\_Change\\
 \end{tabular}
 \end{table}
 
-From the given figure \ref{fig:g2}, the Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.Australia has population growth rate around 1.48\% averagely according to World Bank data.Migration and birth rate minus mortality rate were included in this growth rate.
+From the given figure \ref{fig:g2} and table \ref{tab:Tchange}, the Australian population has been growing steadily from 17,000,000 to over 25,000,000 in the year between 1990 to 2020.Australia has population growth rate around 1.48\% averagely according to World Bank data.Migration and birth rate minus mortality rate were included in this growth rate.However,the population growth rate has experienced a downward trend from 2006 to 2007,which has dropped from 1.49\% to 0.63\% making the line no as smooth as previous years.The reason why the increase has weakened is because Australia government had tightened the policy for international migration at that particular time.
 
 \subsection{Further analysis between GDP and population}
+
+\begin{table}[H]
+
+\caption{\label{tab:Achange}Percent of Population in different age group}
+\centering
+\begin{tabular}[t]{r|r|r|r|r}
+\hline
+year & 0\_14 & 15\_64 & 65\_over & International migrants (\% of population)\\
+\hline
+1990 & 22.08942 & 66.85183 & 11.05875 & 23.13414\\
+\hline
+1995 & 21.57035 & 66.57259 & 11.85706 & 22.91521\\
+\hline
+2000 & 20.88242 & 66.79390 & 12.32367 & 22.95594\\
+\hline
+2009 & 19.03234 & 67.59111 & 13.37656 & 26.54431\\
+\hline
+2014 & 18.88734 & 66.25805 & 14.85461 & 28.21841\\
+\hline
+2018 & 19.27545 & 64.80335 & 15.92120 & NA\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Figures/A1-1} 
+
+}
+
+\caption{Population age proportion}\label{fig:A1}
+\end{figure}
+
+Looking at the age distribution of Australian , the figure \ref{fig:A1} and table \ref{tab:Achange} shows the Australia's population is aging gradually. The percentage of people over the age of 65 has risen from 11.058\% in 1990 to 15.921\% in 2018. On the contrary, the proportion of children is gradually decreasing, from 22.089\% in 1990 to 2018. 19.275\% of the year. There is also a slight downward trend for young adults aged 15 to 65, but more importantly, the proportion of international immigrants in Australia's population has increased significantly, from 23.13\% to 28.24\% in the same period.This explains why the birth rate is decreasing year by year and the population is getting old, the total population of Australia is increasing year by year, because a large number of international immigrants fill up the labor force and promote economic development to a certain extent.
+
+\begin{center}\includegraphics{Figures/lm1-1} \end{center}
+
+\providecommand{\docline}[3]{\noalign{\global\setlength{\arrayrulewidth}{#1}}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+\begin{longtable}[c]{|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}|p{0.75in}}
+
+
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}
+
+\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{term}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{estimate}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{std.error}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{statistic}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{p.value}}} \\
+
+\noalign{\global\setlength{\arrayrulewidth}{2pt}}\arrayrulecolor[HTML]{666666}\cline{1-5}
+
+\endfirsthead
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=2pt}-}
+
+\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{term}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{estimate}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{std.error}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{statistic}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{p.value}}} \\
+
+\noalign{\global\setlength{\arrayrulewidth}{2pt}}\arrayrulecolor[HTML]{666666}\cline{1-5}\endhead
+
+
+
+\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{(Intercept)}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{-7.3136}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{22.2978}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{-0.3280}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.7455}}} \\
+
+
+
+
+
+\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{`0\_14`}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.1206}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.1994}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.6048}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.5506}}} \\
+
+
+
+
+
+\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{`15\_64`}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.1191}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.3312}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.3596}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{0.7221}}} \\
+
+
+
+
+
+\multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedright}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{`65\_over`}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{}}} & \multicolumn{1}{!{\color[HTML]{000000}\vrule width 0pt}>{\raggedleft}p{\dimexpr 0.75in+0\tabcolsep+0\arrayrulewidth}!{\color[HTML]{000000}\vrule width 0pt}}{\fontsize{11}{11}\selectfont{\textcolor[HTML]{000000}{}}} \\
+
+\noalign{\global\setlength{\arrayrulewidth}{2pt}}\arrayrulecolor[HTML]{666666}\cline{1-5}
+
+\end{longtable}
+
+The figure \ref{fig:lm1} shows single liner regression to judge whether they have a connection. The increase in the percentage of the elderly population has a negative impact on GDP. This may be because the Australian government's annual financial burden will be heavier due to the pension and living security of the elderly, and the elderly cannot work like the young to drive economic development. The increase in the proportion of children and young adults can significantly promote economic development. From a global perspective, young adults have always been the main force in economic construction. At the same time, a series of activities such as education and medical care brought about by raising children can also stimulate consumption and promote economic development. This is no exception in Australia.
 
 \section{Exploring Unemployment Rate}
 
@@ -451,6 +539,7 @@ We also notice that the average male unemployment rate is slightly higher than t
 \end{figure}
 
 Figure \ref{fig:gender} shows that female unemployment rates have been consistently below male rates, despite there are some pick-ups in unemployment rates for females over the past few years.
+
 In addition, the pattern of unemployment rate by genders is consistent with the total unemployment rate. Since female and male unemployment rates are the subsets of the total unemployment rate.
 
 \subsection{Correlation}
@@ -475,14 +564,14 @@ Figure \ref{fig:cor} shows the sign of coefficients as we expected except for th
 \caption{\label{tab:model}The estimated linear model for the unemployment rate}
 \centering
 \begin{tabular}[t]{lrrrr}
-\toprule{}
+\toprule
   & Estimate & Std. Error & t value & Pr(>|t|)\\
-\midrule{}
+\midrule
 (Intercept) & 27.1939625 & 2.3091897 & 11.776409 & 0.0000000\\
 GDP\_growth & -0.3001259 & 0.1556400 & -1.928334 & 0.0681313\\
 Population & -0.0000009 & 0.0000001 & -8.371780 & 0.0000001\\
 Inflation & -0.4371258 & 0.1294037 & -3.378000 & 0.0029892\\
-\bottomrule{}
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -694,4 +783,3 @@ Through the above model analysis of variables. We can know that the variables ``
 \printbibliography
 
 \end{document}
-
